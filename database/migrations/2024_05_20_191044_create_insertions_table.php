@@ -1,10 +1,8 @@
 <?php
 
-use Illuminate\Cache\TagSet;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
 
 return new class extends Migration
 {
@@ -13,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('properties', function (Blueprint $table) {
+        Schema::create('insertions', function (Blueprint $table) {
             $table->id();
             $table->string('photo');
             $table->string('title');
@@ -31,7 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('properties');
+        Schema::dropIfExists('insertions');
     }
-    
 };
