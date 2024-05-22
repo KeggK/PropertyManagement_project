@@ -1,30 +1,34 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Property;
 use Illuminate\Http\Request;
 
-class PropertyController extends Controller{
+class PropertyController extends Controller
+{
 
 
-    public function show($id){
-        dd($id);
-        $property = Property::find($id);
-        // dd($property);
-        return view('singleProperty',[
-            'property'=>$property
+    public function show($id)
+    {
+
+        $property = Property::findOrFail($id);
+        return view('singleProperty', [
+            'property' => $property
         ]);
-
     }
 
-    public function index(){
+    public function index()
+    {
         $property = Property::all();
-        return view('create-new-property', ['property'=>$property]);
-}
+        return view('create-new-property', ['property' => $property]);
+    }
 
-public function store(Request $request)
-{
-    //try {
+    public function store(Request $request)
+    {
+
+        $imgName = "";
+        //try {
         $request->validate([
             'title' => 'required',
             'image' => 'required',
@@ -35,14 +39,21 @@ public function store(Request $request)
             'tag' => 'required',
         ]);
 
-        // dump($request->image);
-        // if($request->hasfile(image)){
 
-        // }
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $filename = time() . rand() . "." . $file->getClientOriginalExtension();
+            $path = $file->storeAs('public/hazaar-images', $filename);
+            $imgName = $filename;
+        }
+
+        // dd($imgName);
+
+
 
         Property::create([
             'title' => $request->title,
-            'photo' => $request->image,
+            'photo' => $imgName,
             'description' => $request->description,
             'no_rooms' => $request->no_rooms,
             'no_toilets' => $request->no_toilets,
@@ -53,12 +64,30 @@ public function store(Request $request)
         return redirect()->route('property-create')->with('success', 'Property inserted');
 
 
-   // }
+        // }
 
-    // catch(\Exception $e){
-    //     return redirect()->route('insertion-page')->with('error', 'Error happened');
-    // }
-}
+        // catch(\Exception $e){
+        //     return redirect()->route('insertion-page')->with('error', 'Error happened');
+        // }
+    }
 
+    public function edit($id)
+    {
+        $property = Property::find($id);
+        return view('edit-property', ['property' => $property]);
+    }
 
+    public function update(Request $request, $id)
+    {
+        dump($request);
+        $property = Property::find($id);
+    }
+
+    public function destroy($id)
+    {
+        $property = Property::find($id);
+
+        $property->delete();
+        return redirect()->route('all-properties-page')->with('success', 'Property deleted!');
+    }
 }

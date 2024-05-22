@@ -82,13 +82,15 @@
             <div class="flex justify-between">
                 <div class="flex flex-wrap ">
                     @foreach ($saleProperties as $property)
-                        <div class="md:w-1/2 lg:w-1/3">
+                        <div class="">
 
                             <div class="mx-2 border-solid border-slate-200 border-2 rounded-lg bg-slate-50">
-                                    <a class="" href="{{ route('single-property', ['id' => $property->id]) }}">
-                                        
-                                        <img class="w-full h-13" src="../images/hazaar_photos/photo1.jpg" alt="">
-                                    </a>
+                                <a href="{{ route('single-property', ['id' => $property->id]) }}">
+
+
+                                    <img class="w-full h-13" src="{{ asset('storage/hazaar-images/' . $property->photo) }}"
+                                        alt="">
+                                </a>
                                 <div class=" my-5 align-left px-10">
                                     <h2 class="font-sans font-semibold text-2xl">
                                         {{ $property->title }}
@@ -113,7 +115,7 @@
                                                     alt="">
                                             </li>
                                             <li>
-                                                <p>{{ $sale_properties->no_toilets ??  null }}</p>
+                                                <p>{{ $sale_properties->no_toilets ?? null }}</p>
                                             </li>
                                             <li class="mx-3">
                                                 <img src="https://hazaar.eu/wp-content/uploads/2023/10/size.png"
@@ -132,6 +134,12 @@
                                 </div>
                             </div>
 
+                        </div>
+                        <div class="mr-auto">
+                            <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
+                                class="text-gray-700 underline hover:text-black">
+                                Edit
+                            </a>
                         </div>
                     @endforeach
                 </div>
@@ -156,10 +164,11 @@
                 <div class="flex flex-wrap ">
                     {{-- @dd($rentProperties) --}}
                     @foreach ($rentProperties as $property)
-                        <div class="md:w-1/2 lg:w-1/3">
+                        <div class="">
                             <div class="mx-2 border-solid border-slate-200 border-2 rounded-lg bg-slate-50">
                                 <a class="" href="">
-                                    <img class="w-full h-13" src="{{ $property->photo }}" alt="">
+                                    <img class="w-full h-13" src="{{ asset('storage/hazaar-images/' . $property->photo) }}"
+                                        alt="">
                                 </a>
                                 <div class=" my-5 align-left px-10">
                                     <h2 class="font-sans font-semibold text-2xl">

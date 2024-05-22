@@ -13,11 +13,12 @@
                             <div>{{ $error }}</div>
                         @endforeach
                     @endif
-                    <form action=" {{ route('property-create') }} " method="POST" enctype="multipart/form-data">
+                    <form action=" {{ route('update-property', ['id' => $property->id]) }} " method="POST"
+                        enctype="multipart/form-data">
                         <div class="">
                             @csrf
                             <div>
-                                <input type="text" name="title" placeholder="Title..."
+                                <input type="text" name="title" placeholder="Title... " value="{{ $property->title }}"
                                     class="text-6xl text-gray-50 my-10 bg-transparent block border-b-2 w-full h-20 outline-none">
                                 @error('title')
                                     <span>{{ $message }}</span>
@@ -29,6 +30,7 @@
                             </div>
                             <div class="my-10">
                                 <input type="text" name="description" placeholder="Description..."
+                                    value="{{ $property->description }}"
                                     class="rounded-sm text-2xl outline-none block border-b-2 pr-20 pl-3 py-20">
                                 @error('description')
                                     <span>{{ $message }}</span>
@@ -36,12 +38,15 @@
                             </div>
                             <div class="flex gap-x-4">
                                 <input type="number" name="no_rooms" placeholder="Number of rooms"
+                                    value="{{ $property->no_rooms }}"
                                     class="rounded-sm text-xl outline-none block border-b-2 p-3">
                                 <input type="number" name="no_toilets" placeholder="Number of toilets"
+                                    value="{{ $property->no_toilets }}"
                                     class="rounded-sm text-xl outline-none block border-b-2 p-3">
                             </div>
                             <div class="my-10">
                                 <input type="text" name="dimensions" placeholder="Property dimensions"
+                                    value="{{ $property->dimensions }}"
                                     class="rounded-sm text-xl outline-none block border-b-2 p-3">
                                 @error('dimensions')
                                     <span>{{ $message }}</span>

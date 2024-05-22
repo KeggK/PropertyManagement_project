@@ -34,27 +34,23 @@ class HomeController extends Controller
         return view("welcome", [
             "menu_items" => $this->menu,
             'saleProperties' => $saleProperties,
-            'rentProperties'=> $rentProperties
+            'rentProperties' => $rentProperties
         ]);
-
-
     }
 
 
 
     public function displayForSaleProperties()
     {
-        $sale_properties = Property::where('tag', 'LIKE', 'for_sale')->take(3)->get();
+        $sale_properties = Property::where('tag', 'LIKE', 'for_sale')->get();
         // dd('kloe',$sale_properties);
         return $sale_properties;
     }
 
-    public function displayForRentProperties(){
-        $rent_properties = Property::where('tag', 'LIKE', 'for_rent')->take(3)->get();
+    public function displayForRentProperties()
+    {
+        $rent_properties = Property::where('tag', 'LIKE', 'for_rent')->get();
         // dd('egg', $rent_properties);
         return $rent_properties;
     }
-
-    
-
 }
