@@ -4,17 +4,36 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Category;
+use App\Models\User;
 
 class PostsController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $post = Post::all();
+
+        dump($request);
+        if($request->category){
+            $posts = Category::where('category_id', $request->category)->firstOrFail();
+        }
+        if($request->user){
+            $posts = User::where('user_id', $request->user)->firstOrFail();
+        }
+        else{
+        $posts = Post::orderBy('title')->paginate(10);
         // dd($post);
-        return view("blog", ['post' => $post]);
+        $categories = Category::all();
+        $users = User::all();
+        return view("blog", ['posts' => $posts, 'categories' => $categories, 'users' => $users]);
+    }
+    }
+
+    public function filter(Request $request){
+        dd($request);
+
     }
 
     /**
@@ -29,23 +48,38 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     { 
+        $imgName = "";
+        //dd($request);
         try{
         $request->validate([
             'image' => 'required',
             'title' => 'required',
             'description' => 'required',
+            'user_id' => 'required',
+            'category' => 'required'
         ]);
-        dump($request->image);
+        //dump($request->image);
+
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $filename = time() . rand() . "." . $file->getClientOriginalExtension();
+            $path = $file->storeAs('public/hazaar-images', $filename);
+            $imgName = $filename;
+        }
        
            Post::create([
-            'photo' => $request->image, 
+            'photo' => $imgName, 
             'title' =>  $request->title, 
-            'description' => $request->description
+            'description' => $request->description,
+            //'timestamps' => $request->timestamps,
+            'user_id' => $request->user_id,
+            'category_id' => $request->category
 
            ]);
            return redirect()->route('blog-page')->with('success', 'Post created');
 
-        // $post->save; 
+       
+           // $post->save; 
         } catch(\Exception $e){
             dd($e);
 
@@ -61,7 +95,11 @@ class PostsController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        //dd($post);
+        return view('layouts.singlePost', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -77,7 +115,7 @@ class PostsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
     }
 
     /**
