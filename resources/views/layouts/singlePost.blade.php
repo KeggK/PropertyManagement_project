@@ -19,7 +19,8 @@
 
                         <div class="mx-2 border-solid border-slate-200 border-2 rounded-lg bg-slate-50">
 
-                            <img class="w-full h-13" src="{{ asset('storage/hazaar-images/' . $post->photo) }}" alt="">
+                            <img class="w-full h-13" src="{{ asset('storage/hazaar-images/' . $post->photo) }}"
+                                alt="">
 
                             <div class="">
                                 <div class="">
@@ -29,57 +30,36 @@
                                                 <p class="font-bold">Post</p>
                                             </div>
                                             <div class="flex gap-x-3 mx-3 text-sm">
-                                               
-                                                {{-- <div>
-                                                    <p>{{ $post->description }}</p>
+                                                <div class="flex gap-x-3 mx-3 text-sm">
+                                                    <div>
+                                                        <p>Category: {{ $post->category->category_name }}</p>
+                                                    </div>
+                                                    <div>
+                                                        <p>Creator: {{ $post->user->name }}</p>
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="flex gap-x-3 mx-3 text-sm">
-                                                <div class="">
-                                                    <img src="https://hazaar.eu/wp-content/uploads/2023/10/bathroom.png"
-                                                        alt="">
-                                                </div>
-                                                <div>
-                                                    <p>{{ $post->category->category_name }}</p>
-                                                </div>
-                                            </div>--}}
-                                            <div class="flex gap-x-3 mx-3 text-sm">
-                                               <div>
-                                                    <p>Category: {{ $post->category->category_name }}</p>
-                                                </div>
-                                                <div>
-                                                    <p>Creator: {{ $post->user->name }}</p>
-                                                </div>
+                                            <div class="flex gap-x-10">
                                             </div>
-                                        </div>
-                                        <div class="flex gap-x-10">
-                                            {{-- <div class="flex">
-                                                <h2 class="font-bold text-lg">2018</h2>
-                                            </div> --}}
                                         </div>
                                     </div>
                                 </div>
-                                {{-- <div class="flex align-left py-3 px-7 text-slate-600 gap-x-10">
-                                    <p>Lloji i prones</p>
-                                    <p>Dhoma gjumi</p>
-                                    <p>Banjat</p>
-                                    <p>m²</p>
-                                    <p>Viti i ndertimit</p>
-                                </div> --}}
+                                <div class="flex align-left py-3 px-7 flex-col gap-y-3">
+                                    <h2 class="font-sans font-semibold text-2xl">
+                                        Pershkrim
+                                    </h2>
+                                    <p class="gap-y-3">
+                                        {{ $post->description }}
+                                    </p>
+                                </div>
                             </div>
-                            <div class="flex align-left py-3 px-7 flex-col gap-y-3">
-                                <h2 class="font-sans font-semibold text-2xl">
-                                    Pershkrim
-                                </h2>
-                                <p class="gap-y-3">
-                                    {{ $post->description }}
-                                </p>
-                            </div>
+
+
                         </div>
-
-
                     </div>
                 </div>
             </div>
-        </div>
-    @endsection
+        @endsection
+
+
+        

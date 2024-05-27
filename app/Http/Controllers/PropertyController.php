@@ -79,8 +79,43 @@ class PropertyController extends Controller
 
     public function update(Request $request, $id)
     {
-        dump($request);
+        //dump($request);
+        $imgName = "";
+        
+        $request->validate([
+            'title' => 'required',
+            'image' => 'required',
+            'description' => 'required',
+            'no_rooms' => 'nullable',
+            'no_toilets' => 'nullable',
+            'dimensions' => 'required',
+            'tag' => 'required',
+        ]);
+
+
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $filename = time() . rand() . "." . $file->getClientOriginalExtension();
+            $path = $file->storeAs('public/hazaar-images', $filename);
+            $imgName = $filename;
+        }
+
+        // dd($imgName);
+
+
         $property = Property::find($id);
+        $property->update([
+            'title' => $request->title,
+            'photo' => $imgName,
+            'description' => $request->description,
+            'no_rooms' => $request->no_rooms,
+            'no_toilets' => $request->no_toilets,
+            'dimensions' => $request->dimensions,
+            'tag' => $request->tag,
+        ]);
+
+        return redirect()->route('property-create')->with('success', 'Property updated');
+        
     }
 
     public function destroy($id)

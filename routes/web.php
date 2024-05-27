@@ -27,14 +27,20 @@ Route::get('/home', function () {
 Route::get('/about', [AboutUsController::class, 'index'])->name('about-us-page');
 
 Route::get('/blog', [PostsController::class, 'index'])->name('blog-page');
+
 Route::post('/blogfilter', [PostsController::class, 'filter'])->name('filter-blog');
+
 Route::post('/blog', [PostsController::class, 'store'])->name('blog-create');
-
-
 
 Route::get('/property/{id}', [PropertyController::class, 'show'])->name('single-property');
 
 Route::get('/post/{id}', [PostsController::class, 'show'])->name('single-post-page');
+
+Route::get('/post/{id}/edit-post', [PostsController::class, 'edit'])->name('edit-post-page');
+
+Route::post('/post/{id}/edit-post', [PostsController::class, 'update'])->name('update-post');
+
+Route::post('delete-post/{id}', [PostsController::class, 'destroy'])->name('delete-post');
 
 Route::get('/all-properties', [AllPropertiesController::class, 'index'])->name('all-properties-page');
 

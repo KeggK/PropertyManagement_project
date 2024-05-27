@@ -15,24 +15,24 @@ class PostsController extends Controller
     public function index(Request $request)
     {
 
-        dump($request);
-        if($request->category){
+        // dump($request);
+        if ($request->category) {
             $posts = Category::where('category_id', $request->category)->firstOrFail();
         }
-        if($request->user){
+        if ($request->user) {
             $posts = User::where('user_id', $request->user)->firstOrFail();
+        } else {
+            $posts = Post::orderBy('title')->paginate(10);
+            // dd($post);
+            $categories = Category::all();
+            $users = User::all();
+            return view("blog", ['posts' => $posts, 'categories' => $categories, 'users' => $users]);
         }
-        else{
-        $posts = Post::orderBy('title')->paginate(10);
-        // dd($post);
-        $categories = Category::all();
-        $users = User::all();
-        return view("blog", ['posts' => $posts, 'categories' => $categories, 'users' => $users]);
-    }
     }
 
-    public function filter(Request $request){
-        dd($request);
+    public function filter(Request $request)
+    {
+        //dd($request);
 
     }
 
@@ -47,10 +47,10 @@ class PostsController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    { 
+    {
         $imgName = "";
         //dd($request);
-        try{
+        // try{
         $request->validate([
             'image' => 'required',
             'title' => 'required',
@@ -66,26 +66,26 @@ class PostsController extends Controller
             $path = $file->storeAs('public/hazaar-images', $filename);
             $imgName = $filename;
         }
-       
-           Post::create([
-            'photo' => $imgName, 
-            'title' =>  $request->title, 
+
+        Post::create([
+            'photo' => $imgName,
+            'title' =>  $request->title,
             'description' => $request->description,
             //'timestamps' => $request->timestamps,
             'user_id' => $request->user_id,
             'category_id' => $request->category
 
-           ]);
-           return redirect()->route('blog-page')->with('success', 'Post created');
+        ]);
+        return redirect()->route('blog-page')->with('success', 'Post created');
 
-       
-           // $post->save; 
-        } catch(\Exception $e){
-            dd($e);
 
-        }
+        // $post->save; 
+        // } catch(\Exception $e){
+        //     dd($e);
 
-        
+        // }
+
+
         // dd($post);
         // return redirect()->route('blog-page')->with('success', 'Post created');
     }
@@ -107,7 +107,12 @@ class PostsController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $posts = Post::find($id);
+        //dump($posts);
+        $categories = Category::all();
+        $users = User::all();
+
+        return view("edit-post", ['posts' => $posts, 'categories' => $categories, 'users' => $users]);
     }
 
     /**
@@ -115,7 +120,42 @@ class PostsController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+        $imgName = "";
+        // try{
+        $request->validate([
+            // 'blog_image' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+            'user_id' => 'required',
+            'category' => 'required'
+        ]);
+        if ($request->blog_image) {
+
+            $file = $request->blog_image;
+            $filename = time() . rand() . "." . $file->getClientOriginalExtension();
+            $path = $file->storeAs('public/hazaar-images', $filename);
+            $imgName = $filename;
+        }
+
+        // dd(empty($imgName));
+        $post = Post::find($id);
+        $post->update([
+            'photo' => empty($imgName) ? $post->photo : $imgName,
+            'title' =>  $request->title,
+            'description' => $request->description,
+            'user_id' => $request->user_id,
+            'category_id' => $request->category
+
+        ]);
+
+
+        // $post->save; 
+        // } catch(\Exception $e){
+        //     dd($e);
+
+        // }
+
+        return redirect()->route('blog-page')->with('success', 'Post has been updated!');
     }
 
     /**
@@ -123,6 +163,8 @@ class PostsController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $posts = Post::find($id);
+        $posts->delete();
+        return redirect()->route('blog-create')->with('success', 'Post has been deleted!');
     }
 }
