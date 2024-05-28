@@ -19,7 +19,7 @@ class HomeController extends Controller
         "Kontakt" => "home_page",
         "About" => "about-us-page",
         "Blog" => "blog-page",
-        "Insert Property" => "new-property-page"
+        "Insert Property" => "new-property-page",
         // "Property" => "single-property-page"
 
     ];

@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\AllPropertiesController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\PropertyController;
 
@@ -53,5 +55,13 @@ Route::post('/property/{id}/edit-property', [PropertyController::class, 'update'
 Route::get('/create-new-property', [PropertyController::class, 'index'])->name('new-property-page');
 
 Route::post('/create-new-property', [PropertyController::class, 'store'])->name('property-create');
+
+Route::get('/login', [AuthController::class, 'index'])->name('login-page');
+
+Route::post('/login', [AuthController::class, 'login'])->name('login-create');
+
+Route::get('/register', [AuthController::class, 'registrationIndex'])->name('register-page');
+
+Route::post('/register', [AuthController::class, 'registration'])->name('register-create');
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'displayHome'])->name('home_page');
