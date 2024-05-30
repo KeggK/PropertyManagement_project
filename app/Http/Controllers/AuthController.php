@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Queue\Jobs\RedisJob;
+use Session;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthController extends Controller{
 
@@ -14,17 +17,19 @@ class AuthController extends Controller{
 
 
     public function login(Request $request){
-        $login = $request->validate([
+        $validator = $request->validate([
             'email' => 'required',
             'password'=> 'required'
         ]);
 
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)){
-            return redirect()->route('home_page')->withSuccess('Logged in');
+            $request->session()->put('logged_in', true);
+            return redirect()->intended('/')
+            ->withSuccess('Signed in');
         }
-        $login['email_password'] = 'Incorrect email address or password';
-        return redirect()->route('login-page')->withErrors(($login));
+        $validator['email_password'] = 'Incorrect email address or password';
+        return redirect()->route('login-page')->withErrors(($validator));
 
     }
 
@@ -39,7 +44,7 @@ class AuthController extends Controller{
             'email'=>'required|email|unique:users',
             'password'=>'required|min:8'
         ]);
-        // dd($request);
+        //dd($request);
         $userData = $request->all();
         $check = $this->create($userData);
 
@@ -51,7 +56,10 @@ class AuthController extends Controller{
         return User::create([
             'name'=>$userData['name'],
             'email'=>$userData['email'],
-            'password'=>Hash::make($userData['password'])
+            'password'=>Hash::make($userData['password']),
+            'birthday'=>$userData['birthday'],
+            'sex'=>$userData['sex'],
+
         ]);
     }
 
@@ -61,6 +69,12 @@ class AuthController extends Controller{
         }
 
         return redirect()->route('login-page')->withSuccess('You were unable to access');
+    }
+
+    public function signOut(){
+        Session::flush();
+        Auth::logout();
+        return redirect()->route('login-page');
     }
 
 }

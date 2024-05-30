@@ -6,7 +6,7 @@
                 <h2 class="font-bold text-2xl">{{ $property->title }}</h2>
             </div>
             <div>
-                <a href="">
+                <a href="{{route('all-properties-page')}}">
                     <p class="text-slate-700 underline">Zbuloji te gjitha</p>
                 </a>
             </div>
@@ -19,7 +19,7 @@
 
                         <div class="mx-2 border-solid border-slate-200 border-2 rounded-lg bg-slate-50">
 
-                            <img class="w-full h-13" src="../images/hazaar_photos/photo1.jpg" alt="">
+                            <img class="w-full h-13" src="{{ asset('storage/hazaar-images/' . $property->photo)}}"  alt="">
 
                             <div class="my-5 align-left px-10">
                                 <h2 class="font-sans font-semibold text-2xl">

@@ -67,13 +67,13 @@
     <!-- ############# Per Shitje ############### -->
 
 
-    <div class="max-w-screen-2xl px-4 mx-auto lg:px-16">
+    <div class="max-w-screen-2xl px-4 mx-auto lg:px-16 my-8">
         <div class="flex my-8 justify-between w-full">
             <div>
                 <h2 class="font-bold text-2xl">Ne Shitje</h2>
             </div>
             <div>
-                <a href="">
+                <a href="{{route('all-properties-page')}}">
                     <p class="text-slate-700 underline">Zbuloji te gjitha</p>
                 </a>
             </div>
@@ -103,10 +103,12 @@
                                     {{-- @dd($property) --}}
                                     <ul class="flex align-left py-3 px-7 gap-x-10">
                                         <div class="flex">
+                                            
                                             <li class="mx-3">
                                                 <img src="https://hazaar.eu/wp-content/uploads/2023/10/bed.png"
                                                     alt="">
                                             </li>
+                                        
                                             <li>
                                                 <p>{{ $sale_properties->no_rooms ?? null }}</p>
                                             </li>
@@ -121,6 +123,7 @@
                                                 <img src="https://hazaar.eu/wp-content/uploads/2023/10/size.png"
                                                     alt="">
                                             </li>
+                                            
                                             <li>
                                                 <p>{{ $sale_properties->dimensions ?? '' }}</p>
                                             </li>
@@ -130,31 +133,84 @@
                                                 <h2 class="font-bold text-lg">165,000 €</h2>
                                             </li>
                                         </div>
+                                        
                                     </ul>
+                                    <div class="flex align-left my-5 py-3 px-7 gap-x-5">
+                                        <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
+                                            class=" text-black-500  bg-transparent border-b-2 border-black px-5 py-3 rounded-md">
+                                            Edit
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
 
                         </div>
-                        <div class="mr-auto">
-                            <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
-                                class="text-gray-700 underline hover:text-black">
-                                Edit
-                            </a>
-                        </div>
+                        
                     @endforeach
                 </div>
             </div>
         </div>
 
 
+        {{-- eksploro --}}
+        <div class="hidden lg:flex lg:flex-row my-8">
+            <div class="relative items-center flex bg-slate-50 gap-x-10">
+                <div class="max-w-screen-2xl px-4 lg:px-16 mx-auto">
+                    <div class="flex flex-col gap-y-8 py-10">
+                        <p class="">Në qytet, në zona bregdetare, rurale apo në vendndodhje të njohura – Hazaar
+                            është
+                            kudo me ju!
+                            Zbuloni
+                            <br>
+                            çdo pronë brenda perimetrit të ëndrrave tuaja. Lehtësoni kërkimin tuaj në çdo zonë të
+                            Shqipërisë.
+                            Klikoni tani për një të ardhme të sigurt!
+                        </p>
+                        <div class="align-left">
+                            <button class="bg-black text-green-500 px-6 py-2 rounded-sm text-lg font-semibold">Eksploro
+                                tani</button>
+                        </div>
+                    </div>
+                    <div class="absolute top-0 left-0 flex max-w-screen-2xl px-4 lg:px-16 mx-auto bg-gray-200">
+                        <div>
+                            <h2 class="font-bold text-3xl">Eksploro sipas zonave</h2>
+                        </div>
+                        <div class="px-20 hidden lg:flex"><img
+                                src="https://hazaar.eu/wp-content/uploads/2023/10/shigjeta.png" alt=""></div>
+                    </div>
+                </div>
+                <img class="ml-auto" src="https://hazaar.eu/wp-content/uploads/2023/11/Explore-Area-1.png" alt="">
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-y-5 bg-slate-50 md:flex-row-reverse lg:hidden">
+            <img src="https://hazaar.eu/wp-content/uploads/2023/11/Explore-Area-1.png" alt="">
+            <div><img src="" alt=""></div>
+            <div class="max-w-screen-2xl px-4 lg:px-16 mx-auto flex flex-col gap-y-5 pb-3">
+                <div>
+                    <h2 class="font-bold text-2xl">Eksploro sipas zonave</h2>
+                </div>
+                <div>
+                    <p>Në qytet, në zona bregdetare, rurale apo në vendndodhje të njohura – Hazaar është kudo me ju!
+                        Zbuloni
+                        çdo pronë brenda perimetrit të ëndrrave tuaja. Lehtësoni kërkimin tuaj në çdo zonë të
+                        Shqipërisë.
+                        Klikoni tani për një të ardhme të sigurt!</p>
+                </div>
+                <div><button class="bg-black text-green-500 px-5 py-3 rounded-md text-lg font-semibold">Eksploro
+                        tani</button></div>
+            </div>
+        </div>
+
 
         <!-- ############# Me qira ############### -->
+            
         <div class="flex my-8 justify-between w-full">
             <div>
                 <h2 class="font-bold text-2xl">Me Qira</h2>
             </div>
             <div>
-                <a href="">
+                <a href="{{route('all-properties-page')}}">
                     <p class="text-slate-700 underline">Zbuloji te gjitha</p>
                 </a>
             </div>
@@ -166,9 +222,9 @@
                     @foreach ($rentProperties as $property)
                         <div class="">
                             <div class="mx-2 border-solid border-slate-200 border-2 rounded-lg bg-slate-50">
-                                <a class="" href="">
-                                    <img class="w-full h-13" src="{{ asset('storage/hazaar-images/' . $property->photo) }}"
-                                        alt="">
+                                <a class="" href="{{route('single-property', ['id'=>$property->id])}}">
+                                    <img class="w-full h-13"
+                                        src="{{ asset('storage/hazaar-images/' . $property->photo) }}" alt="">
                                 </a>
                                 <div class=" my-5 align-left px-10">
                                     <h2 class="font-sans font-semibold text-2xl">
@@ -209,6 +265,11 @@
                                             </li>
                                         </div>
                                     </ul>
+                                    <div class="flex align-left my-5 py-3 px-7 gap-x-5">
+                                        <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
+                                            class=" text-black-500  bg-transparent border-b-2 border-black px-5 py-3 rounded-md">
+                                            Edit
+                                        </a>
                                 </div>
                             </div>
                         </div>
@@ -218,58 +279,8 @@
         </div>
 
 
-        {{-- eksploro --}}
-        <div class="hidden lg:flex lg:flex-row ">
-            <div class="relative items-center flex bg-slate-50 gap-x-10">
-                <div class="max-w-screen-2xl px-4 lg:px-16 mx-auto">
-                    <div class="flex flex-col gap-y-8 py-10">
-                        <p class="">Në qytet, në zona bregdetare, rurale apo në vendndodhje të njohura – Hazaar
-                            është
-                            kudo me ju!
-                            Zbuloni
-                            <br>
-                            çdo pronë brenda perimetrit të ëndrrave tuaja. Lehtësoni kërkimin tuaj në çdo zonë të
-                            Shqipërisë.
-                            Klikoni tani për një të ardhme të sigurt!
-                        </p>
-                        <div class="align-left">
-                            <button class="bg-black text-green-500 px-6 py-2 rounded-sm text-lg font-semibold">Eksploro
-                                tani</button>
-                        </div>
-                    </div>
-                    <div class="absolute top-0 left-0 flex max-w-screen-2xl px-4 lg:px-16 mx-auto bg-gray-200">
-                        <div>
-                            <h2 class="font-bold text-3xl">Eksploro sipas zonave</h2>
-                        </div>
-                        <div class="px-20 hidden lg:flex"><img
-                                src="https://hazaar.eu/wp-content/uploads/2023/10/shigjeta.png" alt=""></div>
-                    </div>
-                </div>
-                <img class="ml-auto" src="https://hazaar.eu/wp-content/uploads/2023/11/Explore-Area-1.png"
-                    alt="">
-            </div>
-        </div>
-
-        <div class="flex flex-col gap-y-5 bg-slate-50 md:flex-row-reverse lg:hidden">
-            <img src="https://hazaar.eu/wp-content/uploads/2023/11/Explore-Area-1.png" alt="">
-            <div><img src="" alt=""></div>
-            <div class="max-w-screen-2xl px-4 lg:px-16 mx-auto flex flex-col gap-y-5 pb-3">
-                <div>
-                    <h2 class="font-bold text-2xl">Eksploro sipas zonave</h2>
-                </div>
-                <div>
-                    <p>Në qytet, në zona bregdetare, rurale apo në vendndodhje të njohura – Hazaar është kudo me ju!
-                        Zbuloni
-                        çdo pronë brenda perimetrit të ëndrrave tuaja. Lehtësoni kërkimin tuaj në çdo zonë të
-                        Shqipërisë.
-                        Klikoni tani për një të ardhme të sigurt!</p>
-                </div>
-                <div><button class="bg-black text-green-500 px-5 py-3 rounded-md text-lg font-semibold">Eksploro
-                        tani</button></div>
-            </div>
-        </div>
         <!-- ############# Vleresimet sipas kadastres dhe agjencise ############### -->
-        <div class="flex flex-col lg:flex-row lg:justify-between gap-y-5 lg:gap-x-5 ">
+        <div class="flex flex-col lg:flex-row lg:justify-between gap-y-5 lg:gap-x-5 my-8">
             <div class="flex flex-col sm:flex-row  w-full">
                 <img src="https://hazaar.eu/wp-content/uploads/2023/11/Value-ur-home-1.png" alt="">
                 <div class="flex flex-col bg-white w-full px-10 py-6 gap-y-5">
@@ -300,14 +311,18 @@
                 </div>
             </div>
         </div>
+
+
         <!-- ############# Informim per Blogun ############### -->
 
+        
+        
         <div class="flex my-8 justify-between w-full">
             <div>
                 <h2 class="font-bold text-2xl">Informohu ne Blogun Tone</h2>
             </div>
             <div>
-                <a href="">
+                <a href="{{route('blog-page')}}">
                     <p class="text-slate-700 underline">Zbuloji te gjitha</p>
                 </a>
             </div>
@@ -363,6 +378,7 @@
                             </div>
                         </div>
                     @endfor
+                  
                 </div>
             </div>
         </div>

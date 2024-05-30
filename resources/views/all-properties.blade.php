@@ -98,7 +98,7 @@
                                 </div>
                                 <div class="flex align-left py-3 px-7 gap-x-5">
                                     <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
-                                        class=" text-black-500  bg-transparent norder-b-2 border-black px-5 py-3 rounded-md">
+                                        class=" text-black-500  bg-transparent border-b-2 border-black px-5 py-3 rounded-md">
                                         Edit
                                     </a>
                                     <form action="{{ route('delete-property', ['id' => $property->id]) }}" method="POST">

@@ -34,8 +34,11 @@
 
     @endphp
 
-
-
+@props([
+    'showHeader' => true,
+    'showFooter' => true
+])
+@if($showHeader)
     <header class="bg-white">
 
         <div class="max-w-screen-2xl px-4 lg:px-16 mx-auto">
@@ -74,22 +77,47 @@
                             @endforeach
 
                         </div>
-                        <div>
-                            <a class="hidden lg:flex" href="#">
-                                <img class="w-6 h-6" src="../../images/header2.png">
-                            </a>
+                        <div class="flex flex-col " x-data="{ open: false }">
+                            <button @click="open =! open">
+                                    <img class="w-6 h-6" src="../../images/header2.png">
+                                </button>
+                            <div x-show="open" @click.outside="open = false">
+                                <div class="absolute top-[80px] right-0 py-10 px-6 flex flex-col h-auto bg-white gap-y-5 divide-y text-gray-600 font-semibold uppercase">
+                                   <a href="{{route('my-profile-page')}}">
+                                    My Profile
+                                   </a>
+                                   <a cass="nav-link" href="{{ route('signout') }}">Logout</a>
+                                </div>
+                            </div>
                         </div>
+                    
+                        <ul>
+                            @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login-page') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register-page') }}">Register</a>
+                    </li>
+                    @else
+                    {{-- <li class="nav-item">
+                        <a cass="nav-link" href="{{ route('signout') }}">Logout</a>
+                    </li> --}}
+                    @endguest
+                        </ul>
                     </ul>
                 </div>
             </nav>
         </div>
     </header>
+    @endif
 
     <div>@yield('content')</div>
 
 
     <!-- ############# Footer ############### -->
 
+    @if($showFooter)
     <footer class="bg-white mt-6">
         <div class="flex  py-10 justify-between max-w-screen-2xl px-4 lg:px-16 mx-auto">
             <div class="flex flex-col gap-y-5">
@@ -192,6 +220,7 @@
             </p>
         </div>
     </footer>
+    @endif
 </body>
 
 </html>
