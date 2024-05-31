@@ -12,13 +12,13 @@ class UserController extends Controller{
         return view('myProfile',['user'=>$user]);
     }
 
-    public function store(Request $request){
+    // public function store(Request $request){
         
-        $request->validate([
-            'birthday'=>'required',
-            'sex'=>'required',
-            'email'=>'required',
-            'password'=>'required'
-        ]);
-    }
+    //     $request->validate([
+    //         'birthday'=>'required',
+    //         'sex'=>'required',
+    //         'email'=>'required',
+    //         'password'=>'required'
+    //     ]);
+    // }
 }

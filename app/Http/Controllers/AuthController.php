@@ -42,9 +42,10 @@ class AuthController extends Controller{
         $request->validate([
             'name'=>'required',
             'email'=>'required|email|unique:users',
-            'password'=>'required|min:8'
+            'password'=>'required|min:8',
+            
         ]);
-        //dd($request);
+        // dd($request);
         $userData = $request->all();
         $check = $this->create($userData);
 
@@ -59,9 +60,16 @@ class AuthController extends Controller{
             'password'=>Hash::make($userData['password']),
             'birthday'=>$userData['birthday'],
             'sex'=>$userData['sex'],
+            'photo'=>$userData['image']
 
         ]);
     }
+
+    public function viewProfile(){
+        $userData = User::findOrFail(auth()->user()->id);
+        return view('myProfile', ['userData'=>$userData]);
+    }
+
 
     public function home(){
         if(Auth::check()){

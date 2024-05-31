@@ -41,12 +41,12 @@
 @if($showHeader)
     <header class="bg-white">
 
-        <div class="max-w-screen-2xl px-4 lg:px-16 mx-auto">
+        <div x-data="{ menu_open: false, profile_open: false }" class="max-w-screen-2xl px-4 lg:px-16 mx-auto">
 
             <nav class="relative md:mx-auto md:flex md:items-center md:justify-between py-4">
-                <div class="flex flex-col lg:hidden" x-data="{ open: false }">
-                    <button @click="open =! open"><i class="fa-solid fa-bars"></i></button>
-                    <div x-show="open" @click.outside="open = false">
+                <div class="flex flex-col lg:hidden">
+                    <button @click="menu_open =! menu_open"><i class="fa-solid fa-bars"></i></button>
+                    <div x-show="menu_open" @click.outside="menu_open = false">
                         <div
                             class="absolute top-0 left-0 flex flex-col h-screen bg-white w-[40%] gap-y-5 divide-y text-gray-600 font-semibold uppercase">
                             @foreach ($menu as $item)
@@ -77,11 +77,11 @@
                             @endforeach
 
                         </div>
-                        <div class="flex flex-col " x-data="{ open: false }">
-                            <button @click="open =! open">
+                        <div class="flex flex-col">
+                            <button @click="profile_open =! profile_open">
                                     <img class="w-6 h-6" src="../../images/header2.png">
                                 </button>
-                            <div x-show="open" @click.outside="open = false">
+                            <div x-show="profile_open" @click.outside="profile_open = false">
                                 <div class="absolute top-[80px] right-0 py-10 px-6 flex flex-col h-auto bg-white gap-y-5 divide-y text-gray-600 font-semibold uppercase">
                                    <a href="{{route('my-profile-page')}}">
                                     My Profile
