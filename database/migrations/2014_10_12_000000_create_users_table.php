@@ -18,6 +18,7 @@ return new class extends Migration
             $table->date('birthday')->nullable();
             $table->enum('sex', ['F', 'M', 'O'])->nullable();
             $table->string('email')->unique();
+            $table->enum('role', ['buyer', 'seller', 'admin'])->default('buyer');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

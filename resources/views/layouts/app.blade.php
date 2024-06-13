@@ -24,11 +24,9 @@
             'Kreu' => 'home_page',
             'Ne Shitje' => 'home_page',
             'Me Qira' => 'home_page',
-            'Cmimet' => 'home_page',
-            'Kontakt' => 'home_page',
             'About' => 'about-us-page',
             'Blog' => 'blog-page',
-            'Insert Property' => 'new-property-page'
+            'Add new property' => 'new-property-page'
             // 'Property' => 'single-property-page'
         ];
 
@@ -43,7 +41,7 @@
 
         <div x-data="{ menu_open: false, profile_open: false }" class="max-w-screen-2xl px-4 lg:px-16 mx-auto">
 
-            <nav class="relative md:mx-auto md:flex md:items-center md:justify-between py-4">
+            <nav class="relative  md:flex md:items-center md:justify-between py-4">
                 <div class="flex flex-col lg:hidden">
                     <button @click="menu_open =! menu_open"><i class="fa-solid fa-bars"></i></button>
                     <div x-show="menu_open" @click.outside="menu_open = false">
@@ -118,7 +116,7 @@
     <!-- ############# Footer ############### -->
 
     @if($showFooter)
-    <footer class="bg-white mt-6">
+    <footer class="bg-white">
         <div class="flex  py-10 justify-between max-w-screen-2xl px-4 lg:px-16 mx-auto">
             <div class="flex flex-col gap-y-5">
                 <div>

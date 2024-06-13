@@ -40,5 +40,69 @@ class DatabaseSeeder extends Seeder
         \App\Models\Category::create([
             'category_name' => 'sport'
         ]);
+
+        \App\Models\Property::create([
+            'title' => "Apartamennt ne shitje",
+            'photo' => '1717586844358732153.jpg',
+            'description' => "Description for Property for Sale",
+            'no_rooms' => rand(1, 5),
+            'no_toilets' => rand(1, 3),
+            'dimensions' => '100x100',
+            'tag' => 'for_sale',
+            'price' => 2568,
+        ]);
+        \App\Models\Property::create([
+            'title' => "Okazion: Apartament ne shitje",
+            'photo' => '1717586844358732153.jpg',
+            'description' => "Description for Property for Sale",
+            'no_rooms' => rand(1, 5),
+            'no_toilets' => rand(1, 3),
+            'dimensions' => '100x100',
+            'tag' => 'for_sale',
+            'price' => 2568,
+        ]);
+        \App\Models\Property::create([
+            'title' => "Premium Sale!",
+            'photo' => '1717586844358732153.jpg',
+            'description' => "Description for Property for Sale",
+            'no_rooms' => rand(1, 5),
+            'no_toilets' => rand(1, 3),
+            'dimensions' => '100x100',
+            'tag' => 'for_sale',
+            'price' => 2568,
+        ]);
+
+
+        \App\Models\Property::create([
+            'title' => "Apartament me qira",
+            'photo' => '1717586844358732153.jpg',
+            'description' => "Description for Property for Rent",
+            'no_rooms' => rand(1, 5),
+            'no_toilets' => rand(1, 3),
+            'dimensions' => '100x100',
+            'tag' => 'for_rent',
+            'price' => 2568,
+        ]);
+        \App\Models\Property::create([
+            'title' => "Vile private ne bregdet",
+            'photo' => '1717586844358732153.jpg',
+            'description' => "Description for Property for Rent",
+            'no_rooms' => rand(1, 5),
+            'no_toilets' => rand(1, 3),
+            'dimensions' => '100x100',
+            'tag' => 'for_rent',
+            'price' => 2568,
+        ]);
+        \App\Models\Property::create([
+            'title' => "Okazion: Gazionere",
+            'photo' => '1717586844358732153.jpg',
+            'description' => "Description for Property for Rent",
+            'no_rooms' => rand(1, 5),
+            'no_toilets' => rand(1, 3),
+            'dimensions' => '100x100',
+            'tag' => 'for_rent',
+            'price' => 2568,
+        ]);
+
     }
 }

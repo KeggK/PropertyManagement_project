@@ -90,7 +90,7 @@
                                 </a>
                                 <div class=" my-5 align-left px-10">
                                     <h2 class="font-sans font-semibold text-2xl">
-                                        {{ $property->title }}
+                                        {{ $property->title ?? ''}}
                                     </h2>
                                     <div>
                                         <p>{{ $property->description }}</p>
@@ -101,6 +101,7 @@
                                         class=" text-black-500  bg-transparent border-b-2 border-black px-5 py-3 rounded-md">
                                         Edit
                                     </a>
+                                    
                                     <form action="{{ route('delete-property', ['id' => $property->id]) }}" method="POST">
                                         @csrf
                                         <button type="submit" class="bg-black text-green-500 px-5 py-3 rounded-md">

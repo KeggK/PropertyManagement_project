@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('no_rooms')->nullable();
             $table->integer('no_toilets')->nullable();            
             $table->string('dimensions');
+            $table->decimal('price', 10,2)->nullable();
             $table->enum ('tag', ["for_sale","for_rent"])->default("for_sale");
             $table->timestamps();
         });

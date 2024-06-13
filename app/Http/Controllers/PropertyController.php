@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Property;
 use Illuminate\Http\Request;
+use App\Models\FormContact;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\PropertyContactEmail;
+use Exception;
 
 class PropertyController extends Controller
 {
@@ -81,7 +85,7 @@ class PropertyController extends Controller
     {
         //dump($request);
         $imgName = "";
-        
+
         $request->validate([
             'title' => 'required',
             'image' => 'required',
@@ -115,7 +119,6 @@ class PropertyController extends Controller
         ]);
 
         return redirect()->route('property-create')->with('success', 'Property updated');
-        
     }
 
     public function destroy($id)
@@ -124,5 +127,32 @@ class PropertyController extends Controller
 
         $property->delete();
         return redirect()->route('all-properties-page')->with('success', 'Property deleted!');
+    }
+
+
+    public function sendEmail(Request $request, $propertyId)
+    {
+
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'phone' => 'required'
+        ]);
+
+        try {
+            $formData = [
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'message' => $request->message ?? '',
+                'property_id' => (int) $propertyId,
+                'role' => $request->role ?? 'seller',
+            ];
+            Mail::to('admin@gmail.com')->send(new PropertyContactEmail($formData));
+            FormContact::create($formData);
+            return redirect()->route('property-contact', ['id' => $propertyId])->withSuccess('Thanks for contacting us!');
+        } catch (Exception $e) {
+            dd($e);
+        }
     }
 }
