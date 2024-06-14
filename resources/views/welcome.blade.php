@@ -73,7 +73,7 @@
                 <h2 class="font-bold text-2xl">Ne Shitje</h2>
             </div>
             <div>
-                <a href="{{route('all-properties-page')}}">
+                <a href="{{ route('all-properties-page') }}">
                     <p class="text-slate-700 underline">Zbuloji te gjitha</p>
                 </a>
             </div>
@@ -82,7 +82,7 @@
             <div class="flex justify-between">
                 <div class="flex flex-wrap ">
                     @foreach ($saleProperties as $property)
-                        <div class="">
+                        <div class="md:w-1/2 lg:w-1/3">
 
                             <div class="mx-2 border-solid border-slate-200 border-2 rounded-lg bg-slate-50">
                                 <a href="{{ route('single-property', ['id' => $property->id]) }}">
@@ -103,12 +103,12 @@
                                     {{-- @dd($property) --}}
                                     <ul class="flex align-left py-3 px-7 gap-x-10">
                                         <div class="flex">
-                                            
+
                                             <li class="mx-3">
                                                 <img src="https://hazaar.eu/wp-content/uploads/2023/10/bed.png"
                                                     alt="">
                                             </li>
-                                        
+
                                             <li>
                                                 <p>{{ $sale_properties->no_rooms ?? null }}</p>
                                             </li>
@@ -123,7 +123,7 @@
                                                 <img src="https://hazaar.eu/wp-content/uploads/2023/10/size.png"
                                                     alt="">
                                             </li>
-                                            
+
                                             <li>
                                                 <p>{{ $sale_properties->dimensions ?? '' }}</p>
                                             </li>
@@ -133,7 +133,7 @@
                                                 <h2 class="font-bold text-lg">165,000 €</h2>
                                             </li>
                                         </div>
-                                        
+
                                     </ul>
                                     <div class="flex align-left my-5 py-3 px-7 gap-x-5">
                                         <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
@@ -145,7 +145,6 @@
                             </div>
 
                         </div>
-                        
                     @endforeach
                 </div>
             </div>
@@ -204,13 +203,13 @@
 
 
         <!-- ############# Me qira ############### -->
-            
+
         <div class="flex my-8 justify-between w-full">
             <div>
                 <h2 class="font-bold text-2xl">Me Qira</h2>
             </div>
             <div>
-                <a href="{{route('all-properties-page')}}">
+                <a href="{{ route('all-properties-page') }}">
                     <p class="text-slate-700 underline">Zbuloji te gjitha</p>
                 </a>
             </div>
@@ -222,7 +221,7 @@
                     @foreach ($rentProperties as $property)
                         <div class="">
                             <div class="mx-2 border-solid border-slate-200 border-2 rounded-lg bg-slate-50">
-                                <a class="" href="{{route('single-property', ['id'=>$property->id])}}">
+                                <a class="" href="{{ route('single-property', ['id' => $property->id]) }}">
                                     <img class="w-full h-13"
                                         src="{{ asset('storage/hazaar-images/' . $property->photo) }}" alt="">
                                 </a>
@@ -270,9 +269,9 @@
                                             class=" text-black-500  bg-transparent border-b-2 border-black px-5 py-3 rounded-md">
                                             Edit
                                         </a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     @endforeach
                 </div>
             </div>
@@ -315,14 +314,14 @@
 
         <!-- ############# Informim per Blogun ############### -->
 
-        
-        
+
+
         <div class="flex my-8 justify-between w-full">
             <div>
                 <h2 class="font-bold text-2xl">Informohu ne Blogun Tone</h2>
             </div>
             <div>
-                <a href="{{route('blog-page')}}">
+                <a href="{{ route('blog-page') }}">
                     <p class="text-slate-700 underline">Zbuloji te gjitha</p>
                 </a>
             </div>
@@ -378,7 +377,7 @@
                             </div>
                         </div>
                     @endfor
-                  
+            </div>
                 </div>
             </div>
         </div>

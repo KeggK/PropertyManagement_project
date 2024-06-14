@@ -54,6 +54,13 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get('/change-password', [AuthController::class, 'changePassword'])->name('change-password-page');
     Route::post('/change-password', [AuthController::class, 'passwordUpdate'])->name('update-password');
     Route::get('/', [App\Http\Controllers\HomeController::class, 'displayHome'])->name('home_page');
+
+    Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'view'])->name('users-dashboard');
+    Route::get('/users', [App\Http\Controllers\AdminController::class, 'displayUsers'])->name('users-list');
+    Route::get('/properties', [App\Http\Controllers\AdminController::class, 'displayProperties'])->name('properties-list');
+    Route::get('/contacts', [App\Http\Controllers\AdminController::class, 'displayQuestions'])->name('contacts-list');
+
+
 });
 
 // Route::middleware([RedirectIfAuthenticated::class])->group(function () {

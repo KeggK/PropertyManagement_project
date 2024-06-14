@@ -9,6 +9,6 @@ class FormContact extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'email', 'message', 'role', 'phone','property_id'];
+    protected $fillable = ['name', 'email', 'message', 'role', 'phone', 'property_id'];
 
 }

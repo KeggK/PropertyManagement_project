@@ -63,6 +63,7 @@ class PropertyController extends Controller
             'no_toilets' => $request->no_toilets,
             'dimensions' => $request->dimensions,
             'tag' => $request->tag,
+            'user_id'=>auth()->user()->id
         ]);
 
         return redirect()->route('property-create')->with('success', 'Property inserted');

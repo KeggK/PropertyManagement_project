@@ -50,6 +50,8 @@ class DatabaseSeeder extends Seeder
             'dimensions' => '100x100',
             'tag' => 'for_sale',
             'price' => 2568,
+            'user_id'=> 1
+
         ]);
         \App\Models\Property::create([
             'title' => "Okazion: Apartament ne shitje",
@@ -60,6 +62,7 @@ class DatabaseSeeder extends Seeder
             'dimensions' => '100x100',
             'tag' => 'for_sale',
             'price' => 2568,
+            'user_id'=> 1
         ]);
         \App\Models\Property::create([
             'title' => "Premium Sale!",
@@ -70,6 +73,7 @@ class DatabaseSeeder extends Seeder
             'dimensions' => '100x100',
             'tag' => 'for_sale',
             'price' => 2568,
+            'user_id'=> 1
         ]);
 
 
@@ -82,6 +86,7 @@ class DatabaseSeeder extends Seeder
             'dimensions' => '100x100',
             'tag' => 'for_rent',
             'price' => 2568,
+            'user_id'=> 1
         ]);
         \App\Models\Property::create([
             'title' => "Vile private ne bregdet",
@@ -92,6 +97,7 @@ class DatabaseSeeder extends Seeder
             'dimensions' => '100x100',
             'tag' => 'for_rent',
             'price' => 2568,
+            'user_id'=> 1
         ]);
         \App\Models\Property::create([
             'title' => "Okazion: Gazionere",
@@ -102,6 +108,7 @@ class DatabaseSeeder extends Seeder
             'dimensions' => '100x100',
             'tag' => 'for_rent',
             'price' => 2568,
+            'user_id'=> 1
         ]);
 
     }

@@ -84,6 +84,18 @@
                                    <a href="{{route('my-profile-page')}}">
                                     My Profile
                                    </a>
+                                   {{-- all users --}}
+                                   <a href="#">
+                                    My Favourites
+                                   </a>
+                                   {{-- only admins and sellers --}}
+                                   <a href="#">
+                                    Properties
+                                   </a>
+                                   {{-- only admin --}}
+                                   <a href="{{route('users-dashboard')}}">
+                                    Dashboard
+                                   </a>
                                    <a cass="nav-link" href="{{ route('signout') }}">Logout</a>
                                 </div>
                             </div>
