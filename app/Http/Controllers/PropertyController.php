@@ -93,6 +93,7 @@ class PropertyController extends Controller
             'description' => 'required',
             'no_rooms' => 'nullable',
             'no_toilets' => 'nullable',
+            'price' => 'nullable',
             'dimensions' => 'required',
             'tag' => 'required',
         ]);
@@ -115,6 +116,7 @@ class PropertyController extends Controller
             'description' => $request->description,
             'no_rooms' => $request->no_rooms,
             'no_toilets' => $request->no_toilets,
+            'price' => $request->price,
             'dimensions' => $request->dimensions,
             'tag' => $request->tag,
         ]);

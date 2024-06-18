@@ -99,12 +99,25 @@
         <div class="mt-8 lg:mt-20">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
-                <div class="rounded-lg overflow-hidden order-none sm:order-first">
-                    <iframe
+                <div id="googleMap" class="rounded-lg overflow-hidden order-none sm:order-first">
+                    {{-- <script src="https://maps.googleapis.com/maps/api/js"></script>
+                    <script>
+                        function map(){
+                            var coordinates = {
+                                center: new google.maps.LatLng(41.3322, 19.8173,)
+                                zoom:5,
+                            };
+                            var map = new google.maps.Map(document.getElementById('googleMap'), coordinates);
+                        }
+                    </script>
+                    {{-- <script
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3785.7850672491236!2d76.58802159999999!3d18.402630699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcf83ca88e84341%3A0x841e547bf3ad066d!2zQmFwcGEgZmxvdXIgbWlsbCB8IOCkrOCkquCljeCkquCkviDgpKrgpYDgpKAg4KSX4KS_4KSw4KSj4KWALCDgpK7gpL_gpLDgpJrgpYAg4KSV4KS-4KSC4KSh4KSqIOCkhuCko-CkvyDgpLbgpYfgpLXgpL7gpK_gpL4!5e0!3m2!1sen!2sin!4v1713433597892!5m2!1sen!2sin"
-                        class="w-full" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"></iframe>
-
+                        >
+                    </script> --}}
+                        <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11981.839352931134!2d19.803607412835085!3d41.34235783897204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13503173e66c0dcf%3A0x65b9cafdcd236ca7!2sStacioni%20i%20Trenit%2C%20Tirana%2C%20Albania!5e0!3m2!1sen!2s!4v1718703802171!5m2!1sen!2s" 
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
 
                 <div class="px-3 mx-auto w-full bg-white font-[sans-serif]">

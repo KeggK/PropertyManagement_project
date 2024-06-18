@@ -42,7 +42,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\Property::create([
-            'title' => "Apartamennt ne shitje",
+            'title' => "Apartament ne shitje",
             'photo' => '1717586844358732153.jpg',
             'description' => "Description for Property for Sale",
             'no_rooms' => rand(1, 5),

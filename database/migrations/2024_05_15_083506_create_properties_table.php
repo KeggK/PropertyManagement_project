@@ -25,6 +25,8 @@ return new class extends Migration
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->decimal('price', 10,2)->nullable();
             $table->enum ('tag', ["for_sale","for_rent"])->default("for_sale");
+            $table->unsignedBigInteger('city_id');
+            $table->foreing('city_id')->references('id')->on('cities');
             $table->timestamps();
         });
     }

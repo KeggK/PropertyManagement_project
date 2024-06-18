@@ -41,6 +41,13 @@
                                     class="rounded-sm text-xl outline-none block border-b-2 p-3">
                             </div>
                             <div class="my-10">
+                                <input type="number" name="price" placeholder="Property price"
+                                    class="rounded-sm text-xl outline-none block border-b-2 p-3">
+                                @error('price')
+                                    <span>{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="my-10">
                                 <input type="text" name="dimensions" placeholder="Property dimensions"
                                     class="rounded-sm text-xl outline-none block border-b-2 p-3">
                                 @error('dimensions')

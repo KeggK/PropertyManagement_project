@@ -130,7 +130,7 @@
                                         </div>
                                         <div class="ml-auto pr-3">
                                             <li class="flex">
-                                                <h2 class="font-bold text-lg">165,000 €</h2>
+                                                <h2 class="font-bold text-lg">{{ $sale_properties->price ?? '' }}</h2>
                                             </li>
                                         </div>
 
@@ -219,7 +219,8 @@
                 <div class="flex flex-wrap ">
                     {{-- @dd($rentProperties) --}}
                     @foreach ($rentProperties as $property)
-                        <div class="">
+                        <div class="md:w-1/2 lg:w-1/3">
+
                             <div class="mx-2 border-solid border-slate-200 border-2 rounded-lg bg-slate-50">
                                 <a class="" href="{{ route('single-property', ['id' => $property->id]) }}">
                                     <img class="w-full h-13"
@@ -260,7 +261,7 @@
                                         </div>
                                         <div class="ml-auto pr-3">
                                             <li class="flex">
-                                                <h2 class="font-bold text-lg">165,000 €</h2>
+                                                <h2 class="font-bold text-lg">{{ $rent_properties->price ?? '' }}</h2>
                                             </li>
                                         </div>
                                     </ul>
@@ -272,6 +273,7 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -377,10 +379,10 @@
                             </div>
                         </div>
                     @endfor
-            </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     </div>
 @endsection

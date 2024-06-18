@@ -23,8 +23,12 @@ use App\Models\Contact;
 |
 */
 
+Route::middleware(['admin'])->group(function () {
+
+
 Route::get('/home', function () {
     return view('home');
+});
 });
 
 Route::middleware([Authenticate::class])->group(function () {
@@ -47,6 +51,9 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get('/create-new-property', [PropertyController::class, 'index'])->name('new-property-page');
     Route::post('/create-new-property', [PropertyController::class, 'store'])->name('property-create');
     Route::get('/all-properties', [AllPropertiesController::class, 'index'])->name('all-properties-page');
+    Route::get('/for-rent-properties', [AllPropertiesController::class, 'forRentView'])->name('for-rent-properties-page');
+    Route::get('/for-sale-properties', [AllPropertiesController::class, 'forSaleView'])->name('for-sale-properties-page');
+
 
 
     Route::get('/myProfile', [AuthController::class, 'viewProfile'])->name('my-profile-page');

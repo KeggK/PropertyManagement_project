@@ -61,6 +61,9 @@
                                         Author
                                     </th>
                                     <th scope="col" class="px-6 py-3">
+                                        Total Contacts
+                                    </th>
+                                    <th scope="col" class="px-6 py-3">
                                         View
                                     </th>
                                 </tr>
@@ -86,11 +89,15 @@
                                             {{$property->no_rooms}}
                                         </td>
                                         
+                                        
                                         @php
                                             $user = \App\Models\User::findOrFail($property->user_id);
                                         @endphp
                                         <td class="px-6 py-4">
                                             {{$user->name ?? '?'}}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            5
                                         </td>
                                         <td class="px-6 py-4">
                                             <a href="#"

@@ -64,22 +64,26 @@
             </div>
         </div>
     </div>
-    <!-- ############# Properties ############### -->
 
 
-    <div class="max-w-screen-2xl px-4 mx-auto lg:px-16">
+    <!-- ############# Per Shitje ############### -->
+
+    <div class="max-w-screen-2xl px-4 mx-auto lg:px-16 my-8">
         <div class="flex my-8 justify-between w-full">
             <div>
-                <h2 class="font-bold text-2xl">All Properties</h2>
+                <h2 class="font-bold text-2xl">Ne Shitje</h2>
             </div>
             <div>
+                <a href="{{ route('all-properties-page') }}">
+                    <p class="text-slate-700 underline">Zbuloji te gjitha</p>
+                </a>
             </div>
         </div>
         <div class="flex mb-20">
             <div class="flex justify-between">
                 <div class="flex flex-wrap ">
                     @foreach ($properties as $property)
-                        <div class="">
+                        <div class="md:w-1/2 lg:w-1/3">
 
                             <div class="mx-2 border-solid border-slate-200 border-2 rounded-lg bg-slate-50">
                                 <a href="{{ route('single-property', ['id' => $property->id]) }}">
@@ -90,72 +94,63 @@
                                 </a>
                                 <div class=" my-5 align-left px-10">
                                     <h2 class="font-sans font-semibold text-2xl">
-                                        {{ $property->title ?? ''}}
+                                        {{ $property->title }}
                                     </h2>
                                     <div>
                                         <p>{{ $property->description }}</p>
                                     </div>
-                                    <div class="ml-auto pr-3">
-                                            <h2 class="font-bold text-lg">{{ $property->price ?? '' }}</h2>
-                                    </div>
-                                </div>
-                                <div class="flex align-left py-3 px-7 gap-x-5">
-                                    <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
-                                        class=" text-black-500  bg-transparent border-b-2 border-black px-5 py-3 rounded-md">
-                                        Edit
-                                    </a>
-                                    
-                                    <form action="{{ route('delete-property', ['id' => $property->id]) }}" method="POST">
-                                        @csrf
-                                        <button type="submit" class="bg-black text-green-500 px-5 py-3 rounded-md">
-                                            Delete
-                                        </button>
-                                    </form>
-                                    @if (Session::has('success'))
-                                        {{ Session::get('success') }}
-                                    @elseif(Session::has('error'))
-                                        {{ Session::get('error') }}
-                                    @endif
                                 </div>
                                 <div>
                                     {{-- @dd($property) --}}
                                     <ul class="flex align-left py-3 px-7 gap-x-10">
                                         <div class="flex">
+
                                             <li class="mx-3">
                                                 <img src="https://hazaar.eu/wp-content/uploads/2023/10/bed.png"
                                                     alt="">
                                             </li>
+
                                             <li>
-                                                <p>{{ $sale_properties->no_rooms ?? null }}</p>
+                                                <p>{{ $property->no_rooms ?? null }}</p>
                                             </li>
                                             <li class="mx-3">
                                                 <img src="https://hazaar.eu/wp-content/uploads/2023/10/bathroom.png"
                                                     alt="">
                                             </li>
                                             <li>
-                                                <p>{{ $sale_properties->no_toilets ?? null }}</p>
+                                                <p>{{ $property->no_toilets ?? null }}</p>
                                             </li>
                                             <li class="mx-3">
                                                 <img src="https://hazaar.eu/wp-content/uploads/2023/10/size.png"
                                                     alt="">
                                             </li>
+
                                             <li>
-                                                <p>{{ $sale_properties->dimensions ?? '' }}</p>
+                                                <p>{{ $property->dimensions ?? '' }}</p>
                                             </li>
                                         </div>
                                         <div class="ml-auto pr-3">
                                             <li class="flex">
-                                                <h2 class="font-bold text-lg">165,000 €</h2>
+                                                <h2 class="font-bold text-lg">{{ $property->price ?? '' }}</h2>
                                             </li>
                                         </div>
+
                                     </ul>
+                                    <div class="flex align-left my-5 py-3 px-7 gap-x-5">
+                                        <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
+                                            class=" text-black-500  bg-transparent border-b-2 border-black px-5 py-3 rounded-md">
+                                            Edit
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
 
                         </div>
                     @endforeach
                 </div>
+                {{$properties->links()}}
             </div>
         </div>
     </div>
+
 @endsection

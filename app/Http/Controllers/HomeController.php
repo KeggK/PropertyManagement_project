@@ -13,8 +13,8 @@ class HomeController extends Controller
 
 
         "Kreu" => "home_page",
-        "Ne Shitje" => "home_page",
-        "Me Qira" => "home_page",
+        "Ne Shitje" => "for-sale-properties-page",
+        "Me Qira" => "for-rent-properties-page",
         "Cmimet" => "home_page",
         "Kontakt" => "home_page",
         "About" => "about-us-page",
@@ -44,6 +44,7 @@ class HomeController extends Controller
     {
         $sale_properties = Property::where('tag', 'LIKE', 'for_sale')->get();
         // dd('kloe',$sale_properties);
+        $sale_properties = Property::orderBy('title')->paginate(3);
         return $sale_properties;
     }
 
@@ -51,6 +52,7 @@ class HomeController extends Controller
     {
         $rent_properties = Property::where('tag', 'LIKE', 'for_rent')->get();
         // dd('egg', $rent_properties);
+        $rent_properties = Property::orderBy('title')->paginate(3);
         return $rent_properties;
     }
 }

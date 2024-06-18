@@ -22,8 +22,8 @@
     @php
         $menu = [
             'Kreu' => 'home_page',
-            'Ne Shitje' => 'home_page',
-            'Me Qira' => 'home_page',
+            'Ne Shitje' => 'for-sale-properties-page',
+            'Me Qira' => 'for-rent-properties-page',
             'About' => 'about-us-page',
             'Blog' => 'blog-page',
             'Add new property' => 'new-property-page'
