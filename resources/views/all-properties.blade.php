@@ -126,26 +126,26 @@
                                                     alt="">
                                             </li>
                                             <li>
-                                                <p>{{ $sale_properties->no_rooms ?? null }}</p>
+                                                <p>{{ $properties->no_rooms ?? null }}</p>
                                             </li>
                                             <li class="mx-3">
                                                 <img src="https://hazaar.eu/wp-content/uploads/2023/10/bathroom.png"
                                                     alt="">
                                             </li>
                                             <li>
-                                                <p>{{ $sale_properties->no_toilets ?? null }}</p>
+                                                <p>{{ $properties->no_toilets ?? null }}</p>
                                             </li>
                                             <li class="mx-3">
                                                 <img src="https://hazaar.eu/wp-content/uploads/2023/10/size.png"
                                                     alt="">
                                             </li>
                                             <li>
-                                                <p>{{ $sale_properties->dimensions ?? '' }}</p>
+                                                <p>{{ $properties->dimensions ?? '' }}</p>
                                             </li>
                                         </div>
                                         <div class="ml-auto pr-3">
                                             <li class="flex">
-                                                <h2 class="font-bold text-lg">165,000 €</h2>
+                                                <h2 class="font-bold text-lg">{{ $properties->price ?? ''}}</h2>
                                             </li>
                                         </div>
                                     </ul>

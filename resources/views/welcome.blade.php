@@ -24,13 +24,13 @@
                             <div class="font-semibold">
                                 <ul class="flex space-x-5 my-7  ">
                                     <li>
-                                        <a class="bg-black text-green-500 px-5 py-3 rounded-md" href="#"> All </a>
+                                        <a class="bg-black text-green-500 px-5 py-3 rounded-md" href="{{route('all-properties-page')}}"> All </a>
                                     </li>
                                     <li>
-                                        <a class="text-white " href="#"> Me Qira </a>
+                                        <a class="text-white " href="{{route('for-rent-properties-page')}}"> Me Qira </a>
                                     </li>
                                     <li>
-                                        <a class="text-white " href="#"> Në Shitje </a>
+                                        <a class="text-white " href="{{route('for-sale-properties-page')}}"> Në Shitje </a>
                                     </li>
                                 </ul>
                             </div>
@@ -140,6 +140,11 @@
                                             class=" text-black-500  bg-transparent border-b-2 border-black px-5 py-3 rounded-md">
                                             Edit
                                         </a>
+                                        <form action="{{route('make-favourite', ['id'=>$property->id])}}" method="POST">
+                                            @csrf
+                                            <button type="submit">Favourite</button>
+                                        </form>
+                                        
                                     </div>
                                 </div>
                             </div>

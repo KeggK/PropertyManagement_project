@@ -20,6 +20,8 @@ class AllPropertiesController extends Controller
 
     public function forSaleView(){
         $properties = Property::orderBy('title')->where('tag','=','for_sale')->paginate(10);
+        // dd('tywe',$properties);
+
         return view('for-sale-properties', ['properties' => $properties]);
     }
 

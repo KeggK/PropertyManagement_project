@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Property;
+use App\Models\Favourite;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -36,6 +37,18 @@ class HomeController extends Controller
             'saleProperties' => $saleProperties,
             'rentProperties' => $rentProperties
         ]);
+    }
+
+    public function makeFavourite($property_id){
+
+        Favourite::create([
+            'user_id'=> auth()->user()->id,
+            'property_id' => $property_id
+        ]);
+
+        // return route session flash successs
+        // add try cATCH BLOCK
+
     }
 
 

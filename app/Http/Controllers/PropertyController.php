@@ -41,6 +41,8 @@ class PropertyController extends Controller
             'no_toilets' => 'nullable',
             'dimensions' => 'required',
             'tag' => 'required',
+            'price' => 'nullable',
+            'city_id' => 'nullable'
         ]);
 
 
@@ -63,7 +65,9 @@ class PropertyController extends Controller
             'no_toilets' => $request->no_toilets,
             'dimensions' => $request->dimensions,
             'tag' => $request->tag,
-            'user_id'=>auth()->user()->id
+            'price'=> $request->price,
+            'user_id'=>auth()->user()->id,
+            'city_id' => $request->city_id
         ]);
 
         return redirect()->route('property-create')->with('success', 'Property inserted');
@@ -119,6 +123,7 @@ class PropertyController extends Controller
             'price' => $request->price,
             'dimensions' => $request->dimensions,
             'tag' => $request->tag,
+            
         ]);
 
         return redirect()->route('property-create')->with('success', 'Property updated');
@@ -153,9 +158,16 @@ class PropertyController extends Controller
             ];
             Mail::to('admin@gmail.com')->send(new PropertyContactEmail($formData));
             FormContact::create($formData);
-            return redirect()->route('property-contact', ['id' => $propertyId])->withSuccess('Thanks for contacting us!');
+            $contacted = FormContact::where('property_id', $propertyId->id)->withCount('formData');
+            return redirect()->route('property-contact', ['id' => $propertyId, 'contacted' => $contacted])->withSuccess('Thanks for contacting us!');
         } catch (Exception $e) {
             dd($e);
         }
     }
+
+    public function showPropertyContactForms($property_id){
+        $forms = FormContact::where('property_id', $property_id)->get();
+        return view('property-contact-forms', ['forms'=>$forms]);
+    }
+
 }

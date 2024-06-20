@@ -37,7 +37,15 @@
                             <div
                                 class="block md:flex bg-white rounded-md md:rounded-full p-2 justify-center items-center w-full md:w-fit space-y-3 md:space-y-0 md:space-x-3">
                                 <div class=" border-solid border-2 border-black rounded-full py-3 px-10">
-                                    <label class=" text-slate-400">Zgjidh qytetin...</label>
+                                    <label for="city_id" class=" text-slate-400">Zgjidh qytetin...</label>
+                                    <select name="city_id" id="city_id">
+                                        <option value="">  </option>
+                                        <option value="1">Tirane</option>
+                                        <option value="2">Durres</option>
+                                        <option value="3">Elbasan</option>
+                                        <option value="4">Vlore</option>
+                                        <option value="5">Fier</option>
+                                    </select>
                                 </div>
                                 <div class="border-solid border-2 border-black rounded-full py-3 px-12">
                                     <label class="">Cmimi max</label>
@@ -134,6 +142,8 @@
                                                 <h2 class="font-bold text-lg">{{ $property->price ?? '' }}</h2>
                                             </li>
                                         </div>
+                                        
+                                        
 
                                     </ul>
                                     <div class="flex align-left my-5 py-3 px-7 gap-x-5">
@@ -141,6 +151,12 @@
                                             class=" text-black-500  bg-transparent border-b-2 border-black px-5 py-3 rounded-md">
                                             Edit
                                         </a>
+                                        <div class="ml-auto pr-3">
+                                        
+                                                <h2 class="font-bold text-lg">{{ $property->city_id }}</h2>
+                                            
+                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>

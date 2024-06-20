@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\User;
+use App\Models\Property;
+use App\Models\Category;
+use App\Models\City;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -15,33 +19,53 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
-        \App\Models\User::create([
+        User::create([
             'name' => 'Test User',
             'email' => 'test@example.com',
             'password' => Hash::make('yourpassword')
         ]);
 
-        \App\Models\User::create([
+        User::create([
             'name' => 'Test User2',
             'email' => 'test@example2.com',
             'password' => Hash::make('yourpassword')
         ]);
 
-        \App\Models\User::create([
+        User::create([
             'name' => 'Test User3',
             'email' => 'test@example3.com',
             'password' => Hash::make('yourpassword')
         ]);
 
-        \App\Models\Category::create([
+        Category::create([
             'category_name' => 'art',
         ]);
 
-        \App\Models\Category::create([
+        Category::create([
             'category_name' => 'sport'
         ]);
 
-        \App\Models\Property::create([
+        City::create([
+            'name' => "Tirane"
+        ]);
+
+        City::create([
+            'name' => "Elbasan"
+        ]);
+
+        City::create([
+            'name' => "Durres"
+        ]);
+
+        City::create([
+            'name' => "Vlore"
+        ]);
+
+        City::create([
+            'name' => "Fier"
+        ]);
+
+        Property::create([
             'title' => "Apartament ne shitje",
             'photo' => '1717586844358732153.jpg',
             'description' => "Description for Property for Sale",
@@ -50,10 +74,11 @@ class DatabaseSeeder extends Seeder
             'dimensions' => '100x100',
             'tag' => 'for_sale',
             'price' => 2568,
-            'user_id'=> 1
+            'user_id'=> 2,
+            'city_id'=> 1
 
         ]);
-        \App\Models\Property::create([
+        Property::create([
             'title' => "Okazion: Apartament ne shitje",
             'photo' => '1717586844358732153.jpg',
             'description' => "Description for Property for Sale",
@@ -62,9 +87,10 @@ class DatabaseSeeder extends Seeder
             'dimensions' => '100x100',
             'tag' => 'for_sale',
             'price' => 2568,
-            'user_id'=> 1
+            'user_id'=> 1,
+            'city_id'=> 2
         ]);
-        \App\Models\Property::create([
+        Property::create([
             'title' => "Premium Sale!",
             'photo' => '1717586844358732153.jpg',
             'description' => "Description for Property for Sale",
@@ -73,11 +99,12 @@ class DatabaseSeeder extends Seeder
             'dimensions' => '100x100',
             'tag' => 'for_sale',
             'price' => 2568,
-            'user_id'=> 1
+            'user_id'=> 1,
+            'city_id'=> 5
         ]);
 
 
-        \App\Models\Property::create([
+        Property::create([
             'title' => "Apartament me qira",
             'photo' => '1717586844358732153.jpg',
             'description' => "Description for Property for Rent",
@@ -86,9 +113,10 @@ class DatabaseSeeder extends Seeder
             'dimensions' => '100x100',
             'tag' => 'for_rent',
             'price' => 2568,
-            'user_id'=> 1
+            'user_id'=> 1,
+            'city_id'=> 4
         ]);
-        \App\Models\Property::create([
+        Property::create([
             'title' => "Vile private ne bregdet",
             'photo' => '1717586844358732153.jpg',
             'description' => "Description for Property for Rent",
@@ -97,9 +125,10 @@ class DatabaseSeeder extends Seeder
             'dimensions' => '100x100',
             'tag' => 'for_rent',
             'price' => 2568,
-            'user_id'=> 1
+            'user_id'=> 1,
+            'city_id'=> 3
         ]);
-        \App\Models\Property::create([
+        Property::create([
             'title' => "Okazion: Gazionere",
             'photo' => '1717586844358732153.jpg',
             'description' => "Description for Property for Rent",
@@ -108,8 +137,10 @@ class DatabaseSeeder extends Seeder
             'dimensions' => '100x100',
             'tag' => 'for_rent',
             'price' => 2568,
-            'user_id'=> 1
+            'user_id'=> 1,
+            'city_id'=> 1
         ]);
 
     }
 }
+

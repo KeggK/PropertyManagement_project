@@ -55,6 +55,20 @@
                                 @enderror
                             </div>
                             <div class="my-10">
+                                <select type="text" name="city_id" placeholder="City Name"
+                                    class="rounded-sm text-xl outline-none block border-b-2 p-3">
+                                    <option value="">City</option>
+                                    <option value="1">Tirane</option>
+                                    <option value="2">Durres</option>
+                                    <option value="3">Elbasan</option>
+                                    <option value="4">Vlore</option>
+                                    <option value="5">Fier</option>
+                            </select>
+                                @error('dimensions')
+                                    <span>{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="my-10">
                                 <label for="tag"
                                     class="rounded-sm text-xl outline-none block border-b-2 p-3 text-gray-50 ">Select your
                                     option</label>

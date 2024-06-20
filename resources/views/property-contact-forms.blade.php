@@ -28,8 +28,8 @@
                                     d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                     clipRule="evenodd"></path>
                             </svg>
-                            <a href="{{ route('properties-list') }}"
-                                class = "ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">Properties</a>
+                            <a href=""
+                                class = "ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">Users</a>
                         </div>
                     </li>
                 </ol>
@@ -46,22 +46,19 @@
                                         Nr
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Photo
+                                        Name
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Property Title
+                                        Email
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Price
+                                        Phone
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Number of Rooms
+                                        Message
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Author
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Total Contacts
+                                        Role
                                     </th>
                                     <th scope="col" class="px-6 py-3">
                                         View
@@ -69,45 +66,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($properties as $property)
+                                @foreach ($forms as $data)
                                     <tr
                                         class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                         <td class="px-6 py-4">
-                                            {{ $loop->index + 1 }}
-                                        </td>
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <img src="{{ $property->photo }}" alt="">
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            {{ $property->title }}
+                                            {{ $loop->index+1 }}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $property->price }}
+                                            {{$data->name}}
                                         </td>
                                         <td class="px-6 py-4">
-                                            {{ $property->no_rooms }}
+                                            {{$data->email}}
                                         </td>
-
-
-                                        @php
-                                            $user = \App\Models\User::findOrFail($property->user_id);
-                                        @endphp
                                         <td class="px-6 py-4">
-                                            {{ $user->name ?? '?' }}
+                                            {{$data->phone}}
                                         </td>
-                                        @php
-                                        $total = 0;
-                                            $formData = \App\Models\FormContact::where('property_id', $property->id)->get()->count();
-                                            
-                                        @endphp
-                                        {{-- @foreach ($formData as $data) --}}
                                         <td class="px-6 py-4">
-                                            {{ $formData }} 
-                                            <a class="underline text-blue-500 pl-2 cursor-pointer" href="{{ route('display-property-contacts', ['id' => $property->id]) }}">View</a>
-
+                                            {{$data->message}}
                                         </td>
-                                        {{-- @endforeach --}}
+                                        <td class="px-6 py-4">
+                                            {{$data->role}}
+                                        </td>
                                         <td class="px-6 py-4">
                                             <a href="#"
                                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
@@ -116,7 +95,7 @@
                                 @endforeach
 
                             </tbody>
-                            <tr>{{ $properties->links() }}</tr>
+                           
                         </table>
                     </div>
 
