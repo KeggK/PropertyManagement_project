@@ -85,7 +85,7 @@
                                     My Profile
                                    </a>
                                    {{-- all users --}}
-                                   <a href="#">
+                                   <a href="{{route('favourite-list-page')}}">
                                     My Favourites
                                    </a>
                                    {{-- only admins and sellers --}}

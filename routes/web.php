@@ -64,6 +64,8 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::post('/change-password', [AuthController::class, 'passwordUpdate'])->name('update-password');
     Route::get('/', [App\Http\Controllers\HomeController::class, 'displayHome'])->name('home_page');
     Route::post('/make-favourite/{id}', [App\Http\Controllers\HomeController::class, 'makeFavourite'])->name('make-favourite');
+    Route::get('/favourite-listings}', [App\Http\Controllers\FavouriteController::class, 'displayFaves'])->name('favourite-list-page');
+
 
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'view'])->name('users-dashboard');
     Route::get('/users', [App\Http\Controllers\AdminController::class, 'displayUsers'])->name('users-list');

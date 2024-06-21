@@ -40,11 +40,31 @@ class HomeController extends Controller
     }
 
     public function makeFavourite($property_id){
+    
+        $is_found = Favourite::where('user_id', auth()->user()->id)->where('property_id', $property_id)->exists();
+if($is_found){
+    $favourite_item = Favourite::where('user_id', auth()->user()->id)->where('property_id', $property_id)->first();
 
-        Favourite::create([
+$favourite_item->delete();
+return redirect()->route('home_page')->withSuccess('The propety was unfavourited');
+
+}
+ else{
+    Favourite::create([
             'user_id'=> auth()->user()->id,
             'property_id' => $property_id
         ]);
+
+        return redirect()->route('home_page')->withSuccess('Property wass added to Favourites');
+
+}
+ 
+
+        // dd($is_found);
+        
+
+        // $property = Favourite::auth()->user()->favourite()->attach($property_id);
+        
 
         // return route session flash successs
         // add try cATCH BLOCK
