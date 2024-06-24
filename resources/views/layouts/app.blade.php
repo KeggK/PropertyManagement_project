@@ -27,8 +27,11 @@
             'About' => 'about-us-page',
             'Blog' => 'blog-page',
             'Add new property' => 'new-property-page'
-            // 'Property' => 'single-property-page'
         ];
+                    if(auth()->user()->role == 'buyer'){
+                        unset($menu['Add new property']);
+                    }
+
 
     @endphp
 
@@ -47,9 +50,9 @@
                     <div x-show="menu_open" @click.outside="menu_open = false">
                         <div
                             class="absolute top-0 left-0 flex flex-col h-screen bg-white w-[40%] gap-y-5 divide-y text-gray-600 font-semibold uppercase">
-                            @foreach ($menu as $item)
+                            @foreach ($menu as $key=>$item)
                                 <div>
-                                    <a class="" href="#">Kreu</a>
+                                    <a class="" href="#">{{$key}}</a>
                                 </div>
                             @endforeach
 
@@ -59,6 +62,7 @@
                 </div>
 
                 <div class="flex">
+                    <a href="{{route('home_page')}}">
                     <img class="h-10 w-full" src="https://hazaar.eu/wp-content/uploads/2023/12/logo-hazzar.svg"
                         alt="hazaar logo">
                     </a>

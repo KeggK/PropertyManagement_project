@@ -2,7 +2,7 @@
 @section('content')
     <div class="">
         <div class="bg-local bg-cover bg-center bg-no-repeat"
-            style="background-image: url('https://hazaar.eu/wp-content/uploads/2023/10/home-page-image.jpg');">
+            style="background-image: url('{{asset('images/banner.png')}}');">
             <div class="">
                 <div class="justify-center py-20">
                     <div
@@ -105,7 +105,7 @@
                                         <div class="flex">
 
                                             <li class="mx-3">
-                                                <img src="https://hazaar.eu/wp-content/uploads/2023/10/bed.png"
+                                                <img src="{{asset('images/bed.png')}}"
                                                     alt="">
                                             </li>
 
@@ -113,14 +113,14 @@
                                                 <p>{{ $sale_properties->no_rooms ?? null }}</p>
                                             </li>
                                             <li class="mx-3">
-                                                <img src="https://hazaar.eu/wp-content/uploads/2023/10/bathroom.png"
+                                                <img src="{{asset('images/bathroom.png')}}"
                                                     alt="">
                                             </li>
                                             <li>
                                                 <p>{{ $sale_properties->no_toilets ?? null }}</p>
                                             </li>
                                             <li class="mx-3">
-                                                <img src="https://hazaar.eu/wp-content/uploads/2023/10/size.png"
+                                                <img src="{{asset('images/size.png')}}"
                                                     alt="">
                                             </li>
 
@@ -136,17 +136,17 @@
 
                                     </ul>
                                     <div class="flex align-left my-5 py-3 px-7 gap-x-5">
-                                        <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
+                                        {{-- <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
                                             class=" text-black-500  bg-transparent border-b-2 border-black px-5 py-3 rounded-md">
                                             Edit
-                                        </a>
+                                        </a> --}}
                                         @php
                                                 $is_found = \App\Models\Favourite::where('user_id', auth()->user()->id)->where('property_id', $property->id)->exists();
 
                                         @endphp
                                         <form action="{{route('make-favourite', ['id'=>$property->id])}}" method="POST">
                                             @csrf
-                                            <button type="submit">
+                                            <button class="bottom-0 right-0" type="submit">
                                                 @if($is_found)
                                                 <svg xmlns="http://www.w3.org/2000/svg" fill="#F42C02" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6  text-red-500">
                                                     <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
@@ -189,8 +189,8 @@
                             Klikoni tani për një të ardhme të sigurt!
                         </p>
                         <div class="align-left">
-                            <button class="bg-black text-green-500 px-6 py-2 rounded-sm text-lg font-semibold">Eksploro
-                                tani</button>
+                            <a href="{{route('all-properties-page')}}" class="bg-black text-green-500 px-6 py-2 rounded-sm text-lg font-semibold">Eksploro
+                                tani</a>
                         </div>
                     </div>
                     <div class="absolute top-0 left-0 flex max-w-screen-2xl px-4 lg:px-16 mx-auto bg-gray-200">
@@ -198,15 +198,15 @@
                             <h2 class="font-bold text-3xl">Eksploro sipas zonave</h2>
                         </div>
                         <div class="px-20 hidden lg:flex"><img
-                                src="https://hazaar.eu/wp-content/uploads/2023/10/shigjeta.png" alt=""></div>
+                                src="{{asset('images/shigjeta.png')}}" alt=""></div>
                     </div>
                 </div>
-                <img class="ml-auto" src="https://hazaar.eu/wp-content/uploads/2023/11/Explore-Area-1.png" alt="">
+                <img class="ml-auto" src="{{asset('images/Explore-Area-1.png')}}" alt="">
             </div>
         </div>
 
         <div class="flex flex-col gap-y-5 bg-slate-50 md:flex-row-reverse lg:hidden">
-            <img src="https://hazaar.eu/wp-content/uploads/2023/11/Explore-Area-1.png" alt="">
+            <img src="{{asset('images/Explore-Area-1.png')}}" alt="">
             <div><img src="" alt=""></div>
             <div class="max-w-screen-2xl px-4 lg:px-16 mx-auto flex flex-col gap-y-5 pb-3">
                 <div>
@@ -219,8 +219,8 @@
                         Shqipërisë.
                         Klikoni tani për një të ardhme të sigurt!</p>
                 </div>
-                <div><button class="bg-black text-green-500 px-5 py-3 rounded-md text-lg font-semibold">Eksploro
-                        tani</button></div>
+                <div><a href="{{route('all-properties-page')}}" class="bg-black text-green-500 px-5 py-3 rounded-md text-lg font-semibold">Eksploro
+                        tani</a></div>
             </div>
         </div>
 
@@ -261,21 +261,21 @@
                                     <ul class="flex align-left py-3 px-7 gap-x-10">
                                         <div class="flex">
                                             <li class="mx-3">
-                                                <img src="https://hazaar.eu/wp-content/uploads/2023/10/bed.png"
+                                                <img src="{{asset('images/bed.png')}}"
                                                     alt="">
                                             </li>
                                             <li>
                                                 <p>{{ $rent_properties->no_rooms ?? '' }}</p>
                                             </li>
                                             <li class="mx-3">
-                                                <img src="https://hazaar.eu/wp-content/uploads/2023/10/bathroom.png"
+                                                <img src="{{asset('images/bathroom.png')}}"
                                                     alt="">
                                             </li>
                                             <li>
                                                 <p>{{ $rent_properties->no_toilets ?? '' }}</p>
                                             </li>
                                             <li class="mx-3">
-                                                <img src="https://hazaar.eu/wp-content/uploads/2023/10/size.png"
+                                                <img src="{{asset('images/size.png')}}"
                                                     alt="">
                                             </li>
                                             <li>
@@ -289,10 +289,33 @@
                                         </div>
                                     </ul>
                                     <div class="flex align-left my-5 py-3 px-7 gap-x-5">
-                                        <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
+                                        {{-- <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
                                             class=" text-black-500  bg-transparent border-b-2 border-black px-5 py-3 rounded-md">
                                             Edit
-                                        </a>
+                                        </a> --}}
+                                        @php
+                                                $is_found = \App\Models\Favourite::where('user_id', auth()->user()->id)->where('property_id', $property->id)->exists();
+
+                                        @endphp
+                                        <form action="{{route('make-favourite', ['id'=>$property->id])}}" method="POST">
+                                            @csrf
+                                            <button class="bottom-0 right-0" type="submit">
+                                                @if($is_found)
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="#F42C02" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6  text-red-500">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                                  </svg>
+                                                @else
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                                  </svg>
+                                                    
+                                                @endif
+                                               
+
+                                              </button>
+
+                                        </form>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -306,7 +329,7 @@
         <!-- ############# Vleresimet sipas kadastres dhe agjencise ############### -->
         <div class="flex flex-col lg:flex-row lg:justify-between gap-y-5 lg:gap-x-5 my-8">
             <div class="flex flex-col sm:flex-row  w-full">
-                <img src="https://hazaar.eu/wp-content/uploads/2023/11/Value-ur-home-1.png" alt="">
+                <img src="{{asset('images/Value-ur-home-1.png')}}" alt="">
                 <div class="flex flex-col bg-white w-full px-10 py-6 gap-y-5">
                     <div>
                         <h2 class="font-bold text-2xl">Vlerësim sipas agjencisë</h2>
@@ -320,7 +343,7 @@
                 </div>
             </div>
             <div class="flex flex-col sm:flex-row w-full">
-                <img src="https://hazaar.eu/wp-content/uploads/2023/11/Agency-Evaluation-1.png" alt="">
+                <img src="{{asset('images/Agency-Evaluation-1.png')}}" alt="">
 
                 <div class="flex flex-col bg-white w-full px-10 py-6 gap-y-5">
                     <div>

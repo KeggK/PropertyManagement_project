@@ -11,16 +11,5 @@ class UserController extends Controller{
         $user=User::all();
         return view('myProfile',['user'=>$user]);
     }
-
-    // public function store(Request $request){
-        
-    //     $request->validate([
-    //         'birthday'=>'required',
-    //         'sex'=>'required',
-    //         'email'=>'required',
-    //         'password'=>'required'
-    //     ]);
-    // }
-
     
 }

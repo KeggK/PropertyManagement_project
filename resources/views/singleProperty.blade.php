@@ -3,7 +3,7 @@
     <div class="max-w-screen-2xl px-4 mx-auto lg:px-16">
         <div class="flex my-8 justify-between w-full">
             <div>
-                <h2 class="font-bold text-2xl">{{ $property->title ?? ''}}</h2>
+                <h2 class="font-bold text-2xl">{{ $property->title ?? '' }}</h2>
             </div>
             <div>
                 <a href="{{ route('all-properties-page') }}">
@@ -66,7 +66,7 @@
                                             <div class="flex">
                                                 <h2 class="font-bold text-lg">2018</h2>
                                             </div>
-                                        
+
                                         </div>
                                     </div>
                                 </div>
@@ -88,6 +88,69 @@
                             </div>
                         </div>
                     </div>
+                    <div class="px-3 mx-3 mt-5 w-full bg-white font-[sans-serif]">
+                        <h1 class="text-3xl text-[#333] font-extrabold text-center pt-5">Book a meeting</h1>
+                        <form action="{{ route('about-contact') }}" method="POST" class="mt-8 space-y-4">
+                            @csrf
+                            <div class="w-full flex flex-col lg:flex-row gap-y-3 gap-x-3">
+                                {{-- <input name="name" type='text' placeholder='Name'
+                                    class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" /> --}}
+
+                                <div class="flex flex-col w-full">
+                                <label for="countries"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tour Options</label>
+                                <select id="countries"
+                                    class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                    <option selected>Choose an option</option>
+                                    <option value="meeting">Meeting</option>
+                                    <option value="videoCall">Video call</option>
+                                </select>
+                            </div>
+<div class="w-full">
+                                <label for=""> Meeting Date
+                                <input name="date" type='date' placeholder='Date'
+                                    class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
+                                </label>
+</div>
+                                {{-- <input name="subject" type='text' placeholder='Subject'
+                                    class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" /> --}}
+
+                                <div class="flex flex-col w-full">
+                                <label for="countries"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Time</label>
+                                <input name="time" type="time" placeholder="Time"
+                                class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
+                                    
+                                </input>
+                            </div>
+
+
+                            </div>
+                            <div class="flex flex-col lg:flex-row gap-y-3 justify-between gap-x-3">
+                                <div class="w-full">
+                                <label for="">Name
+                                <input name="name" type='text' placeholder='Name'
+                                    class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
+                                </label>
+                                </div>
+                                <div class="w-full">
+                                <label for="">Telephone</label>
+                                <input name="number" type='number' placeholder='Telephone'
+                                    class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
+                                </div>
+                                    <div class="w-full">
+                                <label for="">Email
+                                <input name="email" type='email' placeholder='Email'
+                                    class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
+                                </label>
+                            </div>
+                                
+                            </div>
+                            <textarea name="message" placeholder='Message' rows="6"
+                                class="w-full rounded-md px-4 bg-gray-100 text-sm pt-3 outline-blue-500"></textarea>
+                            <button type='submit' class="bg-black text-green-500 cursor-pointer px-5 py-3 rounded-md">Make Reservation</button>
+                        </form>
+                    </div>
                 </div>
             </div>
             <section class="bg-gray-50 w-1/3 h-full">
@@ -100,19 +163,21 @@
                             Hazaar
                         </h1>
                     </a>
-                    <form action="{{ route('property-contact',['id'=>$property->id]) }}" method="POST" class="mt-20">
+                    <form action="{{ route('property-contact', ['id' => $property->id]) }}" method="POST" class="mt-20">
                         @csrf
                         <div class="flex flex-col gap-y-10">
                             <div>
                                 {{-- <label for="">Username</label> --}}
-                                <input name="name" type="text" value="{{auth()->user()->name}}" placeholder="Emri / Mbiemri*" class="p-3" required>
+                                <input name="name" type="text" value="{{ auth()->user()->name }}"
+                                    placeholder="Emri / Mbiemri*" class="p-3" required>
                                 @if ($errors->has('name'))
                                     <span class="text-danger">{{ $errors->first('name') }}</span>
                                 @endif
                             </div>
                             <div>
                                 {{-- <label for="">Email</label> --}}
-                                <input name="email" type="text" value="{{auth()->user()->email}}" placeholder="Email*" class="p-3" required>
+                                <input name="email" type="text" value="{{ auth()->user()->email }}"
+                                    placeholder="Email*" class="p-3" required>
                                 @if ($errors->has('email'))
                                     <span class="text-danger">{{ $errors->first('email') }}</span>
                                 @endif
@@ -123,11 +188,15 @@
                                 @if ($errors->has('phone'))
                                     <span class="text-danger">{{ $errors->first('phone') }}</span>
                                 @endif
-                                
+
                             </div>
-                            <div >
-                                <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
-                                <textarea id="message" rows="6" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" placeholder="Leave a comment..."></textarea>
+                            <div>
+                                <label for="message"
+                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your
+                                    message</label>
+                                <textarea id="message" rows="6"
+                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg shadow-sm border border-gray-300 focus:ring-primary-500 focus:border-primary-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                                    placeholder="Leave a comment..."></textarea>
                             </div>
                             <div>
                                 {{-- <label for="">Identify</label> --}}
@@ -139,8 +208,9 @@
                             </div>
                             <div>
                                 {{-- <form action="{{route(contact-form-submission)}}" method="POST"> --}}
-                               
-                                <input type="submit" class="bg-black text-green-500 cursor-pointer px-5 py-3 rounded-md" value="Dergo Email">
+
+                                <input type="submit" class="bg-black text-green-500 cursor-pointer px-5 py-3 rounded-md"
+                                    value="Dergo Email">
                                 {{-- </form> --}}
                             </div>
                         </div>

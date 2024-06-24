@@ -24,8 +24,11 @@ class PropertyController extends Controller
 
     public function index()
     {
+        
+
         $property = Property::all();
         return view('create-new-property', ['property' => $property]);
+       
     }
 
     public function store(Request $request)
@@ -54,7 +57,6 @@ class PropertyController extends Controller
         }
 
         // dd($imgName);
-
 
 
         Property::create([

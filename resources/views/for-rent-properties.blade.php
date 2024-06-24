@@ -2,7 +2,7 @@
 @section('content')
     <div class="">
         <div class="bg-local bg-cover bg-center bg-no-repeat"
-            style="background-image: url('https://hazaar.eu/wp-content/uploads/2023/10/home-page-image.jpg');">
+            style="background-image: url('{{asset('images/banner.png')}}');">
             <div class="">
                 <div class="justify-center py-20">
                     <div
@@ -102,21 +102,21 @@
                                     <ul class="flex align-left py-3 px-7 gap-x-10">
                                         <div class="flex">
                                             <li class="mx-3">
-                                                <img src="https://hazaar.eu/wp-content/uploads/2023/10/bed.png"
+                                                <img src="{{asset('images/bed.png')}}"
                                                     alt="">
                                             </li>
                                             <li>
                                                 <p>{{ $property->no_rooms ?? '' }}</p>
                                             </li>
                                             <li class="mx-3">
-                                                <img src="https://hazaar.eu/wp-content/uploads/2023/10/bathroom.png"
+                                                <img src="{{asset('images/bathroom.png')}}"
                                                     alt="">
                                             </li>
                                             <li>
                                                 <p>{{ $property->no_toilets ?? '' }}</p>
                                             </li>
                                             <li class="mx-3">
-                                                <img src="https://hazaar.eu/wp-content/uploads/2023/10/size.png"
+                                                <img src="{{asset('images/size.png')}}"
                                                     alt="">
                                             </li>
                                             <li>
@@ -130,10 +130,33 @@
                                         </div>
                                     </ul>
                                     <div class="flex align-left my-5 py-3 px-7 gap-x-5">
-                                        <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
+                                        {{-- <a href="{{ route('edit-property-page', ['id' => $property->id]) }}"
                                             class=" text-black-500  bg-transparent border-b-2 border-black px-5 py-3 rounded-md">
                                             Edit
-                                        </a>
+                                        </a> --}}
+                                        @php
+                                                $is_found = \App\Models\Favourite::where('user_id', auth()->user()->id)->where('property_id', $property->id)->exists();
+
+                                        @endphp
+                                        <form action="{{route('make-favourite', ['id'=>$property->id])}}" method="POST">
+                                            @csrf
+                                            <button class="bottom-0 right-0" type="submit">
+                                                @if($is_found)
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="#F42C02" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6  text-red-500">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                                  </svg>
+                                                @else
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
+                                                  </svg>
+                                                    
+                                                @endif
+                                               
+
+                                              </button>
+
+                                        </form>
+                                        
                                     </div>
                                 </div>
                             </div>

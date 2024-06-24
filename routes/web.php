@@ -24,6 +24,10 @@ use App\Models\Contact;
 */
 
 Route::middleware(['admin'])->group(function () {
+    Route::get('/property/{id}/edit-property', [PropertyController::class, 'edit'])->name('edit-property-page');
+    Route::post('/property/{id}/edit-property', [PropertyController::class, 'update'])->name('update-property');
+    Route::get('/create-new-property', [PropertyController::class, 'index'])->name('new-property-page');
+    Route::post('/create-new-property', [PropertyController::class, 'store'])->name('property-create');
 
 
 Route::get('/home', function () {
@@ -46,10 +50,6 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get('/property/{id}', [PropertyController::class, 'show'])->name('single-property');
     Route::post('/property/{id}', [PropertyController::class, 'sendEmail'])->name('property-contact');
     Route::post('/delete-property/{id}', [PropertyController::class, 'destroy'])->name('delete-property');
-    Route::get('/property/{id}/edit-property', [PropertyController::class, 'edit'])->name('edit-property-page');
-    Route::post('/property/{id}/edit-property', [PropertyController::class, 'update'])->name('update-property');
-    Route::get('/create-new-property', [PropertyController::class, 'index'])->name('new-property-page');
-    Route::post('/create-new-property', [PropertyController::class, 'store'])->name('property-create');
     Route::get('/property-forms/{id}/show', [PropertyController::class, 'showPropertyContactForms'])->name('display-property-contacts');
 
     Route::get('/all-properties', [AllPropertiesController::class, 'index'])->name('all-properties-page');
@@ -64,7 +64,9 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::post('/change-password', [AuthController::class, 'passwordUpdate'])->name('update-password');
     Route::get('/', [App\Http\Controllers\HomeController::class, 'displayHome'])->name('home_page');
     Route::post('/make-favourite/{id}', [App\Http\Controllers\HomeController::class, 'makeFavourite'])->name('make-favourite');
-    Route::get('/favourite-listings}', [App\Http\Controllers\FavouriteController::class, 'displayFaves'])->name('favourite-list-page');
+    Route::get('/favourite-listings', [App\Http\Controllers\FavouriteController::class, 'displayFaves'])->name('favourite-list-page');
+    Route::post('/favourite-delete/{id}', [App\Http\Controllers\FavouriteController::class, 'destroy'])->name('delete-favourite');
+
 
 
     Route::get('/dashboard', [App\Http\Controllers\AdminController::class, 'view'])->name('users-dashboard');

@@ -14,4 +14,10 @@ class FavouriteController extends Controller
         $favourite = Favourite::where('user_id',auth()->user()->id)->get();
         return view('favourites', ['favourite'=>$favourite]);
     }
+
+    public function destroy($property_id){
+        $favourite = Favourite::where('user_id', auth()->user()->id)->where('property_id', $property_id)->first();
+        $favourite->delete();
+        return redirect()->route('favourite-list-page')->with('message', 'The property was removed from favourites!');
+    }
 }

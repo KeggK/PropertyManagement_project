@@ -13,6 +13,7 @@
                             <div>{{ $error }}</div>
                         @endforeach
                     @endif
+                    @if(auth()->user()->role == 'admin' or auth()->user()->role == 'seller')
                     <form action=" {{ route('property-create') }} " method="POST" enctype="multipart/form-data">
                         <div class="">
                             @csrf
@@ -91,7 +92,7 @@
                             @endif
                         </div>
                     </form>
-
+                    @endif
                 </div>
             </div>
         </div>
