@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Property;
 use App\Models\AboutContact;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -29,4 +30,6 @@ class AdminController extends Controller
         $questions = AboutContact::orderBy('name')->paginate(20);
         return view('questions-table', ['questions'=>$questions]);
     }
+
+   
 }

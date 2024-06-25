@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\FormContact;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PropertyContactEmail;
+use App\Models\Reservation;
 use Exception;
 
 class PropertyController extends Controller
@@ -149,6 +150,7 @@ class PropertyController extends Controller
             'phone' => 'required'
         ]);
 
+
         try {
             $formData = [
                 'name' => $request->name,
@@ -170,6 +172,50 @@ class PropertyController extends Controller
     public function showPropertyContactForms($property_id){
         $forms = FormContact::where('property_id', $property_id)->get();
         return view('property-contact-forms', ['forms'=>$forms]);
+    }
+
+    public function bookMeeting(Request $request, $property_id){
+        
+        $request->validate([
+            'tour_type' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+            'fullname' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'message'=>'required',
+
+        ]);
+
+        //dd($request);
+
+
+        
+        try{
+        $reservationData = [
+            'tour_type' => $request->tour_type,
+            'date' => $request->date,
+            'time' => $request->time,
+            'fullname' => $request->fullname,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'message' => $request->message ?? '',
+            'property_id' => (int) $property_id
+        ];
+
+        Reservation::create($reservationData);
+        return redirect()->route('single-property',['id'=>$property_id])->withSuccess('A meeting was successfully booked!');
+
+    }
+    catch(Exception $e){
+        dd($e);
+    }
+}
+
+    public function displayReservations(){
+        $reservations = Reservation::all();
+        //dd($reservations);
+        return view('reservations-table', ['reservations'=>$reservations]);
     }
 
 }

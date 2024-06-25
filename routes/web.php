@@ -51,6 +51,9 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::post('/property/{id}', [PropertyController::class, 'sendEmail'])->name('property-contact');
     Route::post('/delete-property/{id}', [PropertyController::class, 'destroy'])->name('delete-property');
     Route::get('/property-forms/{id}/show', [PropertyController::class, 'showPropertyContactForms'])->name('display-property-contacts');
+    Route::post('/property/{id}/reserve', [PropertyController::class, 'bookMeeting'])->name('reservation-contact');
+    Route::get('/reservations', [PropertyController::class, 'displayReservations'])->name('reservations-list');
+
 
     Route::get('/all-properties', [AllPropertiesController::class, 'index'])->name('all-properties-page');
     Route::get('/for-rent-properties', [AllPropertiesController::class, 'forRentView'])->name('for-rent-properties-page');

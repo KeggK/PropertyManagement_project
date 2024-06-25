@@ -28,7 +28,8 @@
             'Blog' => 'blog-page',
             'Add new property' => 'new-property-page'
         ];
-                    if(auth()->user()->role == 'buyer'){
+        // dd(auth()->user());
+                    if(auth()->check() && auth()->user()->role == 'buyer'){
                         unset($menu['Add new property']);
                     }
 
@@ -91,6 +92,9 @@
                                    {{-- all users --}}
                                    <a href="{{route('favourite-list-page')}}">
                                     My Favourites
+                                   </a>
+                                   <a href="{{route('reservations-list')}}">
+                                    Reservations
                                    </a>
                                    {{-- only admins and sellers --}}
                                    <a href="#">

@@ -90,65 +90,87 @@
                     </div>
                     <div class="px-3 mx-3 mt-5 w-full bg-white font-[sans-serif]">
                         <h1 class="text-3xl text-[#333] font-extrabold text-center pt-5">Book a meeting</h1>
-                        <form action="{{ route('about-contact') }}" method="POST" class="mt-8 space-y-4">
+                        <form action="{{ route('reservation-contact', ['id' => $property->id]) }}" method="POST"
+                            class="mt-8 space-y-4">
                             @csrf
                             <div class="w-full flex flex-col lg:flex-row gap-y-3 gap-x-3">
                                 {{-- <input name="name" type='text' placeholder='Name'
                                     class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" /> --}}
 
                                 <div class="flex flex-col w-full">
-                                <label for="countries"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tour Options</label>
-                                <select id="countries"
-                                    class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                    <option selected>Choose an option</option>
-                                    <option value="meeting">Meeting</option>
-                                    <option value="videoCall">Video call</option>
-                                </select>
-                            </div>
-<div class="w-full">
-                                <label for=""> Meeting Date
-                                <input name="date" type='date' placeholder='Date'
-                                    class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
-                                </label>
-</div>
+                                    <label for="countries"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Tour
+                                        Options</label>
+                                    <select id="countries" name="tour_type"
+                                        class=" bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                                        <option selected>Choose an option</option>
+                                        <option value="meeting">Meeting</option>
+                                        <option value="video_call">Video call</option>
+                                    </select>
+                                </div>
+                                @if ($errors->has('tour_type'))
+                                    <span class="text-red-500">{{ $errors->first('tour_type') }}</span>
+                                @endif
+                                <div class="w-full">
+                                    <label for=""> Meeting Date
+                                        <input name="date" type='date' placeholder='Date'
+                                            class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
+                                    </label>
+                                </div>
+                                    @if ($errors->has('date'))
+                                        <span class="text-red-500">{{ $errors->first('date') }}</span>
+                                    @endif
+                                
                                 {{-- <input name="subject" type='text' placeholder='Subject'
                                     class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" /> --}}
 
                                 <div class="flex flex-col w-full">
-                                <label for="countries"
-                                    class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Time</label>
-                                <input name="time" type="time" placeholder="Time"
-                                class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
-                                    
-                                </input>
-                            </div>
+                                    <label for="countries"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Time</label>
+                                    <input name="time" type="time" placeholder="Time"
+                                        class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
+
+                                    </input>
+                                </div>
+                                    @if ($errors->has('time'))
+                                        <span class="text-red-500">{{ $errors->first('time') }}</span>
+                                    @endif
+                                
 
 
                             </div>
                             <div class="flex flex-col lg:flex-row gap-y-3 justify-between gap-x-3">
                                 <div class="w-full">
-                                <label for="">Name
-                                <input name="name" type='text' placeholder='Name'
-                                    class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
-                                </label>
+                                    <label for="">Name
+                                        <input name="fullname" type='text' placeholder='Name'
+                                            class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
+                                    </label>
                                 </div>
+                                @if ($errors->has('fullname'))
+                                    <span class="text-red-500">{{ $errors->first('fullname') }}</span>
+                                @endif
                                 <div class="w-full">
-                                <label for="">Telephone</label>
-                                <input name="number" type='number' placeholder='Telephone'
-                                    class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
+                                    <label for="">Phone</label>
+                                    <input name="phone" type='number' placeholder='Phone'
+                                        class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
                                 </div>
-                                    <div class="w-full">
-                                <label for="">Email
-                                <input name="email" type='email' placeholder='Email'
-                                    class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
-                                </label>
-                            </div>
-                                
+                                @if ($errors->has('phone'))
+                                    <span class="text-red-500">{{ $errors->first('phone') }}</span>
+                                @endif
+                                <div class="w-full">
+                                    <label for="">Email
+                                        <input name="email" type='email' placeholder='Email'
+                                            class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
+                                    </label>
+                                </div>
+                                @if ($errors->has('email'))
+                                    <span class="text-red-500">{{ $errors->first('email') }}</span>
+                                @endif
                             </div>
                             <textarea name="message" placeholder='Message' rows="6"
                                 class="w-full rounded-md px-4 bg-gray-100 text-sm pt-3 outline-blue-500"></textarea>
-                            <button type='submit' class="bg-black text-green-500 cursor-pointer px-5 py-3 rounded-md">Make Reservation</button>
+                            <button type='submit' class="bg-black text-green-500 cursor-pointer px-5 py-3 rounded-md">Make
+                                Reservation</button>
                         </form>
                     </div>
                 </div>
@@ -163,7 +185,8 @@
                             Hazaar
                         </h1>
                     </a>
-                    <form action="{{ route('property-contact', ['id' => $property->id]) }}" method="POST" class="mt-20">
+                    <form action="{{ route('property-contact', ['id' => $property->id]) }}" method="POST"
+                        class="mt-20">
                         @csrf
                         <div class="flex flex-col gap-y-10">
                             <div>
