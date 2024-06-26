@@ -44,7 +44,11 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get('/post/{id}', [PostsController::class, 'show'])->name('single-post-page');
     Route::get('/post/{id}/edit-post', [PostsController::class, 'edit'])->name('edit-post-page');
     Route::post('/post/{id}/edit-post', [PostsController::class, 'update'])->name('update-post');
-    Route::post('delete-post/{id}', [PostsController::class, 'destroy'])->name('delete-post');
+    Route::post('/delete-post/{id}', [PostsController::class, 'destroy'])->name('delete-post');
+    Route::post('/like-post/{id}', [PostsController::class, 'like'])->name('likes-post');
+    Route::post('/post/comment/{id}', [PostsController::class, 'comment'])->name('comment-post');
+
+
 
 
     Route::get('/property/{id}', [PropertyController::class, 'show'])->name('single-property');

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Category;
 use App\Models\User;
+use App\Models\Comment;
+use App\Models\Like;
 
 class PostsController extends Controller
 {
@@ -167,4 +169,41 @@ class PostsController extends Controller
         $posts->delete();
         return redirect()->route('blog-create')->with('success', 'Post has been deleted!');
     }
+
+
+    public function like($post_id)
+    {
+        $is_liked = Like::where('user_id', auth()->user()->id)->where('post_id', $post_id)->exists();
+        if ($is_liked) {
+            $liked_post = Like::where('user_id', auth()->user()->id)->where('post_id', $post_id)->first();
+
+            $liked_post->delete();
+            return redirect()->route('single-post-page',['id'=>$post_id])->withSuccess('The propety was unfavourited');
+        } else {
+            Like::create([
+                'user_id' => auth()->user()->id,
+                'post_id' => $post_id
+            ]);
+
+            return redirect()->route('single-post-page',['id'=>$post_id])->withSuccess('Post was Liked');
+        }
+    }
+
+    public function comment(Request $request, $post_id){
+        // dd('rjt');
+        $request->validate([
+            'comment'=>'required',
+        ]);
+
+        $comment = [
+            'comment'=>$request->comment,
+            'user_id' => auth()->user()->id,
+            'post_id' => $post_id
+        ];
+       
+        Comment::create($comment);
+
+        return redirect()->route('single-post-page',['id'=>$post_id])->withSuccess('A comment was added to the post');            return redirect()->route('property-contact', ['id' => $propertyId, 'contacted' => $contacted])->withSuccess('Thanks for contacting us!');
+
+        }
 }

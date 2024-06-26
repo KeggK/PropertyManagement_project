@@ -55,6 +55,14 @@ class User extends Authenticatable
         return $this->hasMany(Favourite::class);
     }
 
+    public function like(){
+        return $this->hasMany(Like::class);
+    }
+
+    public function comment(){
+        return $this->hasMany(Comment::class);
+    }
+
     public function isAdmin(){
         return $this->role == 'admin';
     }
@@ -63,5 +71,4 @@ class User extends Authenticatable
         return $this->role == 'seller';
     }
 
-    
 }

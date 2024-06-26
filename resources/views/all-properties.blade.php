@@ -85,7 +85,7 @@
                                 <a href="{{ route('single-property', ['id' => $property->id]) }}">
 
 
-                                    <img class="w-full h-13" src="{{ asset('storage/hazaar-images/' . $property->photo) }}"
+                                    <img class="max-w-md h-13" src="{{ asset('storage/hazaar-images/' . $property->photo) }}"
                                         alt="">
                                 </a>
                                 <div class=" my-5 align-left px-10">

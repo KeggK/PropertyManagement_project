@@ -89,7 +89,7 @@
 
                                     <div class="mx-2 border-solid border-slate-200 border-2 rounded-lg bg-slate-50">
                                         <a href="{{ route('single-post-page', ['id' => $post->id]) }}">
-                                            <img class="w-full h-13"
+                                            <img class="max-w-md h-13"
                                                 src="{{ asset('storage/hazaar-images/' . $post->photo) }}" alt="">
                                         </a>
                                         <div class=" my-5 align-left px-10">

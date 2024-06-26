@@ -64,7 +64,7 @@
 
                 <div class="flex">
                     <a href="{{route('home_page')}}">
-                    <img class="h-10 w-full" src="https://hazaar.eu/wp-content/uploads/2023/12/logo-hazzar.svg"
+                    <img class="h-10 w-full" src="{{asset('images/logo-hazzar.svg')}}"
                         alt="hazaar logo">
                     </a>
 
@@ -85,7 +85,7 @@
                                     <img class="w-6 h-6" src="../../images/header2.png">
                                 </button>
                             <div x-show="profile_open" @click.outside="profile_open = false">
-                                <div class="absolute top-[80px] right-0 py-10 px-6 flex flex-col h-auto bg-white gap-y-5 divide-y text-gray-600 font-semibold uppercase">
+                                <div class="absolute z-50 top-[80px] right-0 py-10 px-6 flex flex-col h-auto bg-white gap-y-5 divide-y text-gray-600 font-semibold uppercase">
                                    <a href="{{route('my-profile-page')}}">
                                     My Profile
                                    </a>

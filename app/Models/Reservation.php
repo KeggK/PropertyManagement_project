@@ -10,4 +10,8 @@ class Reservation extends Model
     use HasFactory;
 
     protected $fillable = ['tour_type', 'date', 'time', 'fullname', 'phone', 'email', 'message','property_id'];
+
+    public function property(){
+        return $this->belongsTo(Property::class);
+    }
 }

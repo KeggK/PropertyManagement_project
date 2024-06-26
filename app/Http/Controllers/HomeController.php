@@ -39,32 +39,30 @@ class HomeController extends Controller
         ]);
     }
 
-    public function makeFavourite($property_id){
-    
+    public function makeFavourite($property_id)
+    {
+
         $is_found = Favourite::where('user_id', auth()->user()->id)->where('property_id', $property_id)->exists();
-if($is_found){
-    $favourite_item = Favourite::where('user_id', auth()->user()->id)->where('property_id', $property_id)->first();
+        if ($is_found) {
+            $favourite_item = Favourite::where('user_id', auth()->user()->id)->where('property_id', $property_id)->first();
 
-$favourite_item->delete();
-return redirect()->route('home_page')->withSuccess('The propety was unfavourited');
+            $favourite_item->delete();
+            return redirect()->route('home_page')->withSuccess('The propety was unfavourited');
+        } else {
+            Favourite::create([
+                'user_id' => auth()->user()->id,
+                'property_id' => $property_id
+            ]);
 
-}
- else{
-    Favourite::create([
-            'user_id'=> auth()->user()->id,
-            'property_id' => $property_id
-        ]);
+            return redirect()->route('home_page')->withSuccess('Property wass added to Favourites');
+        }
 
-        return redirect()->route('home_page')->withSuccess('Property wass added to Favourites');
-
-}
- 
 
         // dd($is_found);
-        
+
 
         // $property = Favourite::auth()->user()->favourite()->attach($property_id);
-        
+
 
         // return route session flash successs
         // add try cATCH BLOCK
@@ -75,17 +73,17 @@ return redirect()->route('home_page')->withSuccess('The propety was unfavourited
 
     public function displayForSaleProperties()
     {
-        $sale_properties = Property::where('tag', 'LIKE', 'for_sale')->get();
+        $sale_properties = Property::where('tag', 'for_sale')->paginate(3);
         // dd('kloe',$sale_properties);
-        $sale_properties = Property::orderBy('title')->paginate(3);
+        // $sale_properties = Property::orderBy('title')->paginate(3);
         return $sale_properties;
     }
 
     public function displayForRentProperties()
     {
-        $rent_properties = Property::where('tag', 'LIKE', 'for_rent')->get();
+        $rent_properties = Property::where('tag', 'for_rent')->paginate(3);
         // dd('egg', $rent_properties);
-        $rent_properties = Property::orderBy('title')->paginate(3);
+        // $rent_properties = Property::orderBy('title')->paginate(3);
         return $rent_properties;
     }
 }

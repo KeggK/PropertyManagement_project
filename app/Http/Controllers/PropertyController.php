@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\FormContact;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PropertyContactEmail;
+use App\Models\Favourite;
 use App\Models\Reservation;
 use Exception;
 
@@ -25,11 +26,10 @@ class PropertyController extends Controller
 
     public function index()
     {
-        
+
 
         $property = Property::all();
         return view('create-new-property', ['property' => $property]);
-       
     }
 
     public function store(Request $request)
@@ -68,8 +68,8 @@ class PropertyController extends Controller
             'no_toilets' => $request->no_toilets,
             'dimensions' => $request->dimensions,
             'tag' => $request->tag,
-            'price'=> $request->price,
-            'user_id'=>auth()->user()->id,
+            'price' => $request->price,
+            'user_id' => auth()->user()->id,
             'city_id' => $request->city_id
         ]);
 
@@ -126,7 +126,7 @@ class PropertyController extends Controller
             'price' => $request->price,
             'dimensions' => $request->dimensions,
             'tag' => $request->tag,
-            
+
         ]);
 
         return redirect()->route('property-create')->with('success', 'Property updated');
@@ -169,13 +169,15 @@ class PropertyController extends Controller
         }
     }
 
-    public function showPropertyContactForms($property_id){
+    public function showPropertyContactForms($property_id)
+    {
         $forms = FormContact::where('property_id', $property_id)->get();
-        return view('property-contact-forms', ['forms'=>$forms]);
+        return view('property-contact-forms', ['forms' => $forms]);
     }
 
-    public function bookMeeting(Request $request, $property_id){
-        
+    public function bookMeeting(Request $request, $property_id)
+    {
+
         $request->validate([
             'tour_type' => 'required',
             'date' => 'required',
@@ -183,39 +185,51 @@ class PropertyController extends Controller
             'fullname' => 'required',
             'phone' => 'required',
             'email' => 'required',
-            'message'=>'required',
+            'message' => 'required',
 
         ]);
 
         //dd($request);
 
 
-        
-        try{
-        $reservationData = [
-            'tour_type' => $request->tour_type,
-            'date' => $request->date,
-            'time' => $request->time,
-            'fullname' => $request->fullname,
-            'phone' => $request->phone,
-            'email' => $request->email,
-            'message' => $request->message ?? '',
-            'property_id' => (int) $property_id
-        ];
 
-        Reservation::create($reservationData);
-        return redirect()->route('single-property',['id'=>$property_id])->withSuccess('A meeting was successfully booked!');
+        try {
+            $reservationData = [
+                'tour_type' => $request->tour_type,
+                'date' => $request->date,
+                'time' => $request->time,
+                'fullname' => $request->fullname,
+                'phone' => $request->phone,
+                'email' => $request->email,
+                'message' => $request->message ?? '',
+                'property_id' => (int) $property_id
+            ];
 
+            Reservation::create($reservationData);
+            return redirect()->route('single-property', ['id' => $property_id])->withSuccess('A meeting was successfully booked!');
+        } catch (Exception $e) {
+            dd($e);
+        }
     }
-    catch(Exception $e){
-        dd($e);
-    }
-}
 
-    public function displayReservations(){
-        $reservations = Reservation::all();
+    public function displayReservations()
+    {
+
+        if (auth()->user()->role == 'admin') {
+            $reservations = Reservation::all();
+        } else {
+            $reservations = Reservation::whereHas('property.user', function ($query) {
+                $query->where('id', auth()->user()->id); // Adjust 'id' to the actual column name of the User ID in your database
+            })->get();
+        }
+
         //dd($reservations);
-        return view('reservations-table', ['reservations'=>$reservations]);
+        return view('reservations-table', ['reservations' => $reservations]);
     }
 
+    public function mostLiked()
+    {
+        $mostLiked = Favourite::orderBy('id')->paginate(3);
+        return view('singleProperty', ['$mostLiked' => $mostLiked]);
+    }
 }
