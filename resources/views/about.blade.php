@@ -3,7 +3,7 @@
 <!-- hero seciton -->
 <div class="relative w-full h-[320px]" id="home">
     <div class="absolute inset-0 opacity-70">
-        <img src="https://image1.jdomni.in/banner/13062021/0A/52/CC/1AF5FC422867D96E06C4B7BD69_1623557926542.png" alt="Background Image" class="object-cover object-center w-full h-full" />
+        <img src="{{ asset('images/about-banner.png') }}" alt="Background Image" class="object-cover object-center w-full h-full" />
 
     </div>
     <div class="absolute inset-9 flex flex-col md:flex-row items-center justify-between">
@@ -11,7 +11,7 @@
             <h1 class="text-grey-700 font-medium text-4xl md:text-5xl leading-tight mb-2">Bappa Flour mill</h1>
             <p class="font-regular text-xl mb-8 mt-4">One stop solution for flour grinding services</p>
             <a href="#contactUs"
-                class="px-6 py-3 bg-[#c8a876] text-white font-medium rounded-full hover:bg-[#c09858]  transition duration-200">Contact
+                class="px-6 py-3 bg-black text-green-500 font-medium rounded-full transition duration-200">Contact
                 Us</a>
         </div>
     </div>
@@ -100,20 +100,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
                 <div id="googleMap" class="rounded-lg overflow-hidden order-none sm:order-first">
-                    {{-- <script src="https://maps.googleapis.com/maps/api/js"></script>
-                    <script>
-                        function map(){
-                            var coordinates = {
-                                center: new google.maps.LatLng(41.3322, 19.8173,)
-                                zoom:5,
-                            };
-                            var map = new google.maps.Map(document.getElementById('googleMap'), coordinates);
-                        }
-                    </script>
-                    {{-- <script
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3785.7850672491236!2d76.58802159999999!3d18.402630699999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcf83ca88e84341%3A0x841e547bf3ad066d!2zQmFwcGEgZmxvdXIgbWlsbCB8IOCkrOCkquCljeCkquCkviDgpKrgpYDgpKAg4KSX4KS_4KSw4KSj4KWALCDgpK7gpL_gpLDgpJrgpYAg4KSV4KS-4KSC4KSh4KSqIOCkhuCko-CkvyDgpLbgpYfgpLXgpL7gpK_gpL4!5e0!3m2!1sen!2sin!4v1713433597892!5m2!1sen!2sin"
-                        >
-                    </script> --}}
+                    
                         <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d11981.839352931134!2d19.803607412835085!3d41.34235783897204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13503173e66c0dcf%3A0x65b9cafdcd236ca7!2sStacioni%20i%20Trenit%2C%20Tirana%2C%20Albania!5e0!3m2!1sen!2s!4v1718703802171!5m2!1sen!2s" 
                         width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
@@ -133,7 +120,7 @@
                         <textarea name="message" placeholder='Message' rows="6"
                             class="w-full rounded-md px-4 bg-gray-100 text-sm pt-3 outline-blue-500"></textarea>
                         <button type='submit'
-                            class="text-white bg-blue-500 hover:bg-blue-600 font-semibold rounded-md text-sm px-4 py-3 w-full">Send</button>
+                            class="text-black bg-green-500 hover:bg-green-600 font-semibold rounded-md text-sm px-4 py-3 w-full">Send</button>
                     </form>
                 </div>
 

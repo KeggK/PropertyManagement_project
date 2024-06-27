@@ -391,56 +391,34 @@
         <div class="flex mb-20">
             <div class="flex justify-between">
                 <div class="flex flex-wrap ">
-                    @for ($i = 0; $i < 3; $i++)
-                        <div class="md:w-1/2 lg:w-1/3">
+                    @foreach ($posts as $post)
+                        <div class="">
+
                             <div class="mx-2 border-solid border-slate-200 border-2 rounded-lg bg-slate-50">
-                                <a class="" href="">
-                                    <img class="w-full h-13"
-                                        src="https://hazaar.eu/wp-content/uploads/2024/04/vila_3-2-584x438.jpg"
+                                <a href="{{ route('single-post-page', ['id' => $post->id]) }}">
+                                    <img class="max-w-md h-13" src="{{ asset('storage/hazaar-images/' . $post->photo) }}"
                                         alt="">
                                 </a>
                                 <div class=" my-5 align-left px-10">
-                                    <h2 class="font-sans font-semibold text-2xl">Apartamente per shitje ne
-                                        Astir
+                                    <h2 class="font-sans font-semibold text-2xl">
+                                        {{ $post->title }}
                                     </h2>
-                                </div>
-                                <div>
-                                    <ul class="flex align-bottom py-3 px-7 gap-x-10">
-                                        <div class="flex">
-                                            <li class="mx-3">
-                                                <img src="https://hazaar.eu/wp-content/uploads/2023/10/bed.png"
-                                                    alt="">
-                                            </li>
-                                            <li>
-                                                <p>2</p>
-                                            </li>
-                                            <li class="mx-3">
-                                                <img src="https://hazaar.eu/wp-content/uploads/2023/10/bathroom.png"
-                                                    alt="">
-                                            </li>
-                                            <li>
-                                                <p>2</p>
-                                            </li>
-                                            <li class="mx-3">
-                                                <img src="https://hazaar.eu/wp-content/uploads/2023/10/size.png"
-                                                    alt="">
-                                            </li>
-                                            <li>
-                                                <p>143</p>
-                                            </li>
-                                        </div>
-                                        <div class="ml-auto pr-3">
-                                            <li class="flex">
-                                                <h2 class="font-bold text-lg">165,000 €</h2>
-                                            </li>
-                                        </div>
-                                    </ul>
+                                    <div>
+                                        <p>{{ $post->description }}</p>
+                                    </div>
+                                    <div>
+                                        <p>{{ $post->category->category_name }}</p>
+                                    </div>
+                                    <div>
+                                        <p>{{ $post->user->name }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    @endfor
+                    @endforeach
                 </div>
             </div>
         </div>
     </div>
 @endsection
+   

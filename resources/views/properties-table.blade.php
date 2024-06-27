@@ -63,9 +63,7 @@
                                     <th scope="col" class="px-6 py-3">
                                         Total Contacts
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        View
-                                    </th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -107,11 +105,9 @@
                                             <a class="underline text-blue-500 pl-2 cursor-pointer" href="{{ route('display-property-contacts', ['id' => $property->id]) }}">View</a>
 
                                         </td>
+                                        
                                         {{-- @endforeach --}}
-                                        <td class="px-6 py-4">
-                                            <a href="#"
-                                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                        </td>
+                                        
                                     </tr>
                                 @endforeach
 

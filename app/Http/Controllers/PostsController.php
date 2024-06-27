@@ -178,32 +178,32 @@ class PostsController extends Controller
             $liked_post = Like::where('user_id', auth()->user()->id)->where('post_id', $post_id)->first();
 
             $liked_post->delete();
-            return redirect()->route('single-post-page',['id'=>$post_id])->withSuccess('The propety was unfavourited');
+            return redirect()->route('single-post-page', ['id' => $post_id])->withSuccess('The propety was unfavourited');
         } else {
             Like::create([
                 'user_id' => auth()->user()->id,
                 'post_id' => $post_id
             ]);
 
-            return redirect()->route('single-post-page',['id'=>$post_id])->withSuccess('Post was Liked');
+            return redirect()->route('single-post-page', ['id' => $post_id])->withSuccess('Post was Liked');
         }
     }
 
-    public function comment(Request $request, $post_id){
+    public function comment(Request $request, $post_id)
+    {
         // dd('rjt');
         $request->validate([
-            'comment'=>'required',
+            'comment' => 'required',
         ]);
 
         $comment = [
-            'comment'=>$request->comment,
+            'comment' => $request->comment,
             'user_id' => auth()->user()->id,
             'post_id' => $post_id
         ];
-       
+
         Comment::create($comment);
 
-        return redirect()->route('single-post-page',['id'=>$post_id])->withSuccess('A comment was added to the post');            return redirect()->route('property-contact', ['id' => $propertyId, 'contacted' => $contacted])->withSuccess('Thanks for contacting us!');
-
-        }
+        return redirect()->route('single-post-page', ['id' => $post_id])->withSuccess('A comment was added to the post');
+    }
 }

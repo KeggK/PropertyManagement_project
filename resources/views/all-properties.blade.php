@@ -75,6 +75,11 @@
             <div>
             </div>
         </div>
+        @if (Session::has('success'))
+        {{ Session::get('success') }}
+    @elseif(Session::has('error'))
+        {{ Session::get('error') }}
+    @endif
         <div class="flex mb-20">
             <div class="flex justify-between">
                 <div class="flex flex-wrap ">
@@ -133,12 +138,6 @@
                                                   </button>
     
                                             </form>
-                                    
-                                    @if (Session::has('success'))
-                                        {{ Session::get('success') }}
-                                    @elseif(Session::has('error'))
-                                        {{ Session::get('error') }}
-                                    @endif
                                 </div>
                                 <div>
                                     {{-- @dd($property) --}}

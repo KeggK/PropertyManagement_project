@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Property;
 use App\Models\Favourite;
+use App\Models\Post;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -32,15 +33,19 @@ class HomeController extends Controller
         $saleProperties = $this->displayForSaleProperties();
         $rentProperties = $this->displayForRentProperties();
         // dd($saleProperties,$rentProperties);
+        $posts = Post::orderBy('created_at', 'DESC')->take(3)->get();
+        // dd($posts);
         return view("welcome", [
             "menu_items" => $this->menu,
             'saleProperties' => $saleProperties,
-            'rentProperties' => $rentProperties
+            'rentProperties' => $rentProperties,
+            'posts' => $posts
         ]);
     }
 
     public function makeFavourite($property_id)
     {
+// dd(url()->current());
 
         $is_found = Favourite::where('user_id', auth()->user()->id)->where('property_id', $property_id)->exists();
         if ($is_found) {
@@ -53,8 +58,8 @@ class HomeController extends Controller
                 'user_id' => auth()->user()->id,
                 'property_id' => $property_id
             ]);
+            return back()->with('success', 'Property was added to Favourites');
 
-            return redirect()->route('home_page')->withSuccess('Property wass added to Favourites');
         }
 
 

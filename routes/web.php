@@ -47,6 +47,7 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::post('/delete-post/{id}', [PostsController::class, 'destroy'])->name('delete-post');
     Route::post('/like-post/{id}', [PostsController::class, 'like'])->name('likes-post');
     Route::post('/post/comment/{id}', [PostsController::class, 'comment'])->name('comment-post');
+    Route::get('/latest-posts', [PostsController::class, 'latest'])->name('last-posts');
 
 
 
