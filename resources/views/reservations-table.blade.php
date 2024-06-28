@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@include('partials.sidemenu')
 
     <body class = "body bg-white dark:bg-[#0F172A]">
         <!-- CONTENT -->
@@ -68,9 +69,7 @@
                                     <th scope="col" class="px-6 py-3">
                                         Property
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        View
-                                    </th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -111,15 +110,11 @@
                                         </a> 
 
                                         </td>
-                                        <td class="px-6 py-4">
-                                            <a href="#"
-                                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                        </td>
+                                        
                                     </tr>
                                 @endforeach
 
                             </tbody>
-                            {{-- <tr>{{$questions->links()}}</tr> --}}
                         </table>
                     </div>
 

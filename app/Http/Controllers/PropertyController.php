@@ -162,8 +162,8 @@ class PropertyController extends Controller
             ];
             Mail::to('admin@gmail.com')->send(new PropertyContactEmail($formData));
             FormContact::create($formData);
-            $contacted = FormContact::where('property_id', $propertyId->id)->withCount('formData');
-            return redirect()->route('property-contact', ['id' => $propertyId, 'contacted' => $contacted])->withSuccess('Thanks for contacting us!');
+            // $contacted = FormContact::where('property_id', $propertyId)->withCount('formData');
+            return redirect()->route('property-contact', ['id' => $propertyId])->withSuccess('Thanks for contacting us!');
         } catch (Exception $e) {
             dd($e);
         }
@@ -232,4 +232,20 @@ class PropertyController extends Controller
         $mostLiked = Favourite::orderBy('id')->paginate(3);
         return view('singleProperty', ['$mostLiked' => $mostLiked]);
     }
+
+    public function filterProperties(Request $request){
+        // dd($request, $request->maxPrice);
+        if($request->city_id){
+            $city_id = (int)$request->city_id;
+            $properties = Property::where('city_id', $city_id)->get();
+        }
+
+        if($request->maxPrice){
+           // $city_id = (int)$request->city_id;
+            $properties = Property::where('price', $request->maxPrice)->get();
+        }
+
+        return view('filtered-properties', ['properties'=>$properties]);
+    }
+
 }

@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+@include('partials.sidemenu')
+
     <div class="max-w-screen-2xl px-4 mx-auto lg:px-16">
         @if ($errors->any())
         @foreach ($errors->all() as $error)

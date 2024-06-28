@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+@include('partials.sidemenu')
 
     <body class = "body bg-white dark:bg-[#0F172A]">
         <!-- CONTENT -->

@@ -34,9 +34,12 @@
                     </li>
                 </ol>
             </nav>
+            @if(auth()->check() && auth()->user()->role == 'admin')
+                
+            
             <div class = "flex flex-wrap my-5 -mx-2">
                 <div class = "w-full lg:w-1/3 p-2">
-                    <a href="{{route('users-list')}}"
+                    <a href="{{ route('users-list') }}"
                         class = "flex items-center flex-row w-full bg-gradient-to-r dark:from-cyan-500 dark:to-blue-500 from-indigo-500 via-purple-500 to-pink-500 rounded-md p-3">
                         <div
                             class = "flex text-indigo-500 dark:text-white items-center bg-white dark:bg-[#0F172A] p-2 rounded-md flex-none w-8 h-8 md:w-12 md:h-12 ">
@@ -64,7 +67,7 @@
                     </a>
                 </div>
                 <div class = "w-full md:w-1/2 lg:w-1/3 p-2 ">
-                    <a href="{{route('properties-list')}}"
+                    <a href="{{ route('properties-list') }}"
                         class = "flex items-center flex-row w-full bg-gradient-to-r dark:from-cyan-500 dark:to-blue-500 from-indigo-500 via-purple-500 to-pink-500 rounded-md p-3">
                         <div
                             class = "flex text-indigo-500 dark:text-white items-center bg-white dark:bg-[#0F172A] p-2 rounded-md flex-none w-8 h-8 md:w-12 md:h-12 ">
@@ -92,7 +95,7 @@
                     </a>
                 </div>
                 <div class = "w-full md:w-1/2 lg:w-1/3 p-2">
-                    <a href="{{route('contacts-list')}}"
+                    <a href="{{ route('contacts-list') }}"
                         class = "flex items-center flex-row w-full bg-gradient-to-r dark:from-cyan-500 dark:to-blue-500 from-indigo-500 via-purple-500 to-pink-500 rounded-md p-3">
                         <div
                             class = "flex text-indigo-500 dark:text-white items-center bg-white dark:bg-[#0F172A] p-2 rounded-md flex-none w-8 h-8 md:w-12 md:h-12 ">
@@ -119,17 +122,12 @@
                     </a>
                 </div>
             </div>
-            <div class = "p-4 mb-4 text-sm text-blue-700 bg-blue-100 rounded-lg dark:bg-blue-200 dark:text-blue-800"
-                role="alert">
-                <span class = "font-medium">Info alert!</span> Change a few things up and try submitting again.
-            </div>
-            <div class = "p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800"
-                role="alert">
-                <span class = "font-medium">Danger alert!</span> Change a few things up and try submitting again.
-            </div>
-            <div class = "p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800"
-                role="alert">
-                <span class = "font-medium">Success alert!</span> Change a few things up and try submitting again.
-            </div>
+            @else
+            <div class="text-center  text-green-500 text-4xl py-20">
+                Hello {{auth()->user()->name}}</div> 
+                <div class=
+                'text-center text-green-500'> You have landed on your dashboard.</div>
+            @endif
         </div>
-    @endsection
+    </body>
+@endsection

@@ -206,4 +206,9 @@ class PostsController extends Controller
 
         return redirect()->route('single-post-page', ['id' => $post_id])->withSuccess('A comment was added to the post');
     }
+
+    public function postsList(){
+        $posts = Post::all();
+        return view('post-table', ['posts'=>$posts]);
+    }
 }

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
+@include('partials.sidemenu')
 
     <body class = "body bg-white dark:bg-[#0F172A]">
-        @include('partials.sidemenu')
         <!-- CONTENT -->
         <div class = "content ml-12 transform ease-in-out duration-500 pt-4 px-2 md:px-5 pb-4 ">
             <nav class = "flex justify-center px-5 py-3 text-gray-700  rounded-lg bg-gray-50 dark:bg-[#1E293B] "
@@ -28,7 +28,7 @@
                                     d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
                                     clipRule="evenodd"></path>
                             </svg>
-                            <a href="{{ route('users-list') }}"
+                            <a href=""
                                 class = "ml-1 text-sm font-medium text-gray-700 hover:text-gray-900 md:ml-2 dark:text-gray-400 dark:hover:text-white">Users</a>
                         </div>
                     </li>
@@ -46,51 +46,48 @@
                                         Nr
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Photo
+                                        Post
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Name
+                                        Total Likes
                                     </th>
                                     <th scope="col" class="px-6 py-3">
-                                        Email
+                                        Total Comments
                                     </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Gender
-                                    </th>
-                                    <th scope="col" class="px-6 py-3">
-                                        Role
-                                    </th>
+                                    
+                                    
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($users as $user)
+                                @foreach ($posts as $post)
                                     <tr
                                         class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
                                         <td class="px-6 py-4">
                                             {{ $loop->index+1 }}
                                         </td>
-                                        <th scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                            <img src="{{$user->photo}}" alt="">
-                                        </th>
                                         <td class="px-6 py-4">
-                                            {{$user->name}}
+                                            {{$post->title}}
                                         </td>
+                                        @php
+                                            //$totalLikes = 0;
+                                            //$liked_post = \App\Models\Like::where('post_id', $post_id)->get()->count();
+                                        @endphp
                                         <td class="px-6 py-4">
-                                            {{$user->email}}
+                                            {{$post->like->count()}}
                                         </td>
+                                        @php
+                                        //$totalComments = 0;
+                                        //$commented_post = \App\Models\Comment::where('post_id', $post_id)->get()->count();
+                                    @endphp
                                         <td class="px-6 py-4">
-                                            {{$user->sex}}
+                                            {{$post->comment->count()}}
                                         </td>
-                                        <td class="px-6 py-4">
-                                            {{$user->role}}
-                                        </td>
+                                        
                                         
                                     </tr>
                                 @endforeach
 
                             </tbody>
-                            <tr>{{$users->links()}}</tr>
                         </table>
                     </div>
 

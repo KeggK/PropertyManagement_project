@@ -9,7 +9,7 @@
         <div class="max-w-screen-2xl px-4 mx-auto lg:px-16 my-8">
             <div class="flex my-8 justify-between w-full">
                 <div>
-                    <h2 class="font-bold text-2xl">Ne Shitje</h2>
+                    <h2 class="font-bold text-2xl">Prona te filtruara</h2>
                 </div>
                 <div>
                     <a href="{{ route('all-properties-page') }}">
@@ -116,7 +116,7 @@
                                             </div>
                                             <div class="ml-auto pr-3">
 
-                                                <h2 class="font-bold text-lg">{{ $property->city_id }}</h2>
+                                                <h2 class="font-bold text-lg">{{ $property->city->name }}</h2>
 
                                             </div>
 
@@ -127,7 +127,7 @@
                             </div>
                         @endforeach
                     </div>
-                    {{ $properties->links() }}
+
                 </div>
             </div>
         </div>

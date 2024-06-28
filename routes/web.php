@@ -48,6 +48,9 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::post('/like-post/{id}', [PostsController::class, 'like'])->name('likes-post');
     Route::post('/post/comment/{id}', [PostsController::class, 'comment'])->name('comment-post');
     Route::get('/latest-posts', [PostsController::class, 'latest'])->name('last-posts');
+    Route::get('/post-table', [PostsController::class, 'postsList'])->name('post-list');
+
+    
 
 
 
@@ -58,6 +61,8 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get('/property-forms/{id}/show', [PropertyController::class, 'showPropertyContactForms'])->name('display-property-contacts');
     Route::post('/property/{id}/reserve', [PropertyController::class, 'bookMeeting'])->name('reservation-contact');
     Route::get('/reservations', [PropertyController::class, 'displayReservations'])->name('reservations-list');
+    Route::post('/filter-properties', [PropertyController::class, 'filterProperties'])->name('properties-filter');
+
 
 
     Route::get('/all-properties', [AllPropertiesController::class, 'index'])->name('all-properties-page');

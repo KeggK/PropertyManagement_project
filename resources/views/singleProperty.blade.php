@@ -11,6 +11,16 @@
                 </a>
             </div>
         </div>
+
+        @if (Session::has('success'))
+            <x-alert :success="true">
+                <strong> {{ Session::get('success') }}</strong>
+            </x-alert>
+        @elseif(Session::has('error'))
+            <x-alert :success="false">
+                <strong> {{ Session::get('error') }}</strong>
+            </x-alert>
+        @endif
         <div class="flex mb-20">
             <div class="flex justify-between w-full">
                 <div class="flex flex-wrap w-full h-full">
@@ -117,10 +127,10 @@
                                             class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" />
                                     </label>
                                 </div>
-                                    @if ($errors->has('date'))
-                                        <span class="text-red-500">{{ $errors->first('date') }}</span>
-                                    @endif
-                                
+                                @if ($errors->has('date'))
+                                    <span class="text-red-500">{{ $errors->first('date') }}</span>
+                                @endif
+
                                 {{-- <input name="subject" type='text' placeholder='Subject'
                                     class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-blue-500" /> --}}
 
@@ -132,10 +142,10 @@
 
                                     </input>
                                 </div>
-                                    @if ($errors->has('time'))
-                                        <span class="text-red-500">{{ $errors->first('time') }}</span>
-                                    @endif
-                                
+                                @if ($errors->has('time'))
+                                    <span class="text-red-500">{{ $errors->first('time') }}</span>
+                                @endif
+
 
 
                             </div>
