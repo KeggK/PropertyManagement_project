@@ -145,7 +145,7 @@
                             </div>
                         </div>
                     </div>
-                    <img class="ml-auto" src="{{ asset('images/Explore-Area-1.png') }}" alt="">
+                    <img class="ml-auto w-80 h-90" src="{{ asset('images/Explore-Area-1.png') }}" alt="">
                 </div>
             </div>
 
@@ -278,8 +278,8 @@
 
             <!-- ############# Vleresimet sipas kadastres dhe agjencise ############### -->
             <div class="flex flex-col lg:flex-row lg:justify-between gap-y-5 lg:gap-x-5 my-8">
-                <div class="flex flex-col sm:flex-row  w-full">
-                    <img src="{{ asset('images/Value-ur-home-1.png') }}" alt="">
+                <div class="flex flex-col sm:flex-row w-full">
+                    <img src="{{ asset('images/Agency-Evaluation-1.png') }}" alt="">
                     <div class="flex flex-col bg-white w-full px-10 py-6 gap-y-5">
                         <div>
                             <h2 class="font-bold text-2xl">Vlerësim sipas agjencisë</h2>
@@ -292,7 +292,7 @@
                     </div>
                 </div>
                 <div class="flex flex-col sm:flex-row w-full">
-                    <img src="{{ asset('images/Agency-Evaluation-1.png') }}" alt="">
+                    <img src="{{ asset('images/Value-ur-home-1.png') }}" alt="">
 
                     <div class="flex flex-col bg-white w-full px-10 py-6 gap-y-5">
                         <div>
