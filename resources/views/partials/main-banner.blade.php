@@ -7,13 +7,13 @@
                         <div class="py-10 px-20">
                             <div class="text-white">
                                 <div>
-                                    <h2 class="text-4xl font-extrabold">Gëzo gjithçka që dëshiron! 
+                                    <h2 class="text-4xl font-extrabold">Gëzo gjithçka që dëshiron!
                                        <br>
                                         Filloni aventurën tuaj tani!
                                     </h2>
                                 </div>
                                 <div class="my-5">
-                                    <p class="font-semibold " href="#">Zgjidhni më të mirën – Pasuri të paluajtshme në çdo cep të vendit!</p>
+                                    <p class="font-semibold " href="#">Zgjidhni më të mirën me Elite Group – Zbuloni shtëpinë tuaj të ëndrrave!</p>
                                 </div>
                             </div>
                             <div class="font-semibold">

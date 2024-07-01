@@ -136,7 +136,7 @@
                                     </li>
                                     <li class="pb-5">
                                         <p>Gjeni agjencinë, filtroni opsionet më të mira dhe zgjidhni pronën perfekte
-                                            për ju! Një vlerësim ndryshe me Hazaar!</p>
+                                            për ju! Një vlerësim ndryshe me Elite!</p>
                                     </li>
                                     <li>
                                         <button class="bg-black text-green-700 font-semibold p-3">Vleresoni sipas
@@ -167,7 +167,7 @@
 
           </div>
           <div class="mt-20 ">
-              <p>Në qytet, në zona bregdetare, rurale apo në vendndodhje të njohura – Hazaar është kudo me ju! Zbuloni
+              <p>Në qytet, në zona bregdetare, rurale apo në vendndodhje të njohura – Elite është kudo me ju! Zbuloni
                   çdo pronë brenda perimetrit të ëndrrave tuaja. Lehtësoni kërkimin tuaj në çdo zonë të Shqipërisë.
                   Klikoni tani për një të ardhme të sigurt!</p>
           </div>
@@ -178,6 +178,6 @@
 
 
 
-      
+
 </body>
 </html>

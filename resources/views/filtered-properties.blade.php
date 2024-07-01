@@ -13,7 +13,7 @@
                 </div>
                 <div>
                     <a href="{{ route('all-properties-page') }}">
-                        <p class="text-slate-700 underline">Zbuloji te gjitha</p>
+                        <p class="text-slate-700 underline">Zbulome teper</p>
                     </a>
                 </div>
             </div>

@@ -59,7 +59,7 @@
 
                     <div class="flex">
                         <a href="{{ route('home_page') }}">
-                            <img class="h-auto w-32" src="{{ asset('../images/main-logo.png') }}" alt="hazaar logo">
+                            <img class="h-auto w-20" src="{{ asset('../images/main-logo.png') }}" alt="elite logo">
                         </a>
 
                     </div>
@@ -153,9 +153,6 @@
                         </a>
                     </div>
                     <div><a href="">
-                            <h2 class="underline text-gray-600">Kerko ne Harte</h2>
-                        </a></div>
-                    <div><a href="">
                             <h2 class="underline text-gray-600">Shtepi te Reja</h2>
                         </a></div>
                     <div><a href="">
@@ -164,55 +161,27 @@
                     <div><a href="">
                             <h2 class="underline text-gray-600">Prona per investim ne shitje</h2>
                         </a></div>
-                    <div><a href="">
-                            <h2 class="underline text-gray-600">Prona ne shitje jashte vendit</h2>
-                        </a></div>
                 </div>
                 <div class="flex flex-col gap-y-5">
                     <div><a href="">
                             <h2 class="font-semibold underline text-gray-600">ME QIRA</h2>
                         </a></div>
                     <div><a href="">
-                            <h2 class="underline text-gray-600">Kerko ne Harte</h2>
-                        </a></div>
-                    <div><a href="">
                             <h2 class="underline text-gray-600">Prona per investim me qira</h2>
                         </a></div>
-                    <div><a href="">
-                            <h2 class="underline text-gray-600">Vizato ne Harte</h2>
-                        </a></div>
-                </div>
-                <div class="flex flex-col gap-y-5">
-                    <div>
-                        <a href="">
-                            <h2 class="font-semibold underline text-gray-600">SHTEPI TE REJA</h2>
-                        </a>
-                    </div>
-                    <div><a href="">
-                            <h2 class="underline text-gray-600">Kerko ne Harte</h2>
-                        </a></div>
-                    <div><a href="">
-                            <h2 class="underline text-gray-600">Manual ne Bashkepronesi</h2>
-                        </a></div>
                 </div>
                 <div class="flex flex-col gap-y-5">
                     <div><a href="">
-                            <h2 class="font-semibold underline text-gray-600">CMIMET E SHTEPIVE</h2>
+                            <h2 class="font-semibold underline text-gray-600">Rreth nesh</h2>
                         </a></div>
                     <div><a href="">
-                            <h2 class="underline text-gray-600">Kerko ne Harte</h2>
+                            <h2 class="underline text-gray-600">Pse ne? </h2>
+                        </a></div>
+                        <div><a href="">
+                            <h2 class="underline text-gray-600">Blogu </h2>
                         </a></div>
                     <div><a href="">
-                            <h2 class="underline text-gray-600">Ne qytet</h2>
-                        </a></div>
-                    <div><a href="">
-                            <h2 class="underline text-gray-600">Ne bregdet</h2>
-                        </a></div>
-                    <div><a href="">
-                            <h2 class="underline text-gray-600">Ne zona rurale</h2>
-                        </a></div>
-                    <div><a href="">
-                            <h2 class="underline text-gray-600">Ne vendodhje te njohura</h2>
+                            <h2 class="underline text-gray-600">Lokacioni</h2>
                         </a></div>
                 </div>
             </div>
@@ -227,7 +196,7 @@
                     <p class="text-xs font-bold px-3 text-gray-600">Kushtet e Perdorimit</p>
                 </a>
                 <a href="">
-                    <p class="text-xs font-bold px-3 text-gray-600">Reklamo ne Hazaar</p>
+                    <p class="text-xs font-bold px-3 text-gray-600">Reklamo ne Elite</p>
                 </a>
                 <a href="">
                     <p class="text-xs font-bold px-3 text-gray-600">Rreth nesh</p>
@@ -242,7 +211,7 @@
                 <a href=""><i class="fa-brands fa-youtube"></i></a>
             </div>
             <div class="max-w-screen-2xl px-4 lg:px-16 mx-auto">
-                <p class="text-xs text-center text-gray-600">© Hazaar - Të gjitha të drejtat të rezervuara
+                <p class="text-xs text-center text-gray-600">© Elite - Të gjitha të drejtat të rezervuara
                 </p>
             </div>
         </footer>

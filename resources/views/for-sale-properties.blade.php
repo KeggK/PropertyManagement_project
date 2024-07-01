@@ -2,6 +2,23 @@
 @section('content')
     <div class="">
         @include('partials.main-banner')
+        <div class="relative flex overflow-x-hidden bg-white">
+            <div class="py-1 animate-marquee whitespace-nowrap">
+                <span class="mx-4 text-xl italic font-bold text-orange-500">Arkitekturë</span>
+                <span class="mx-4 text-xl italic font-bold text-orange-500">Raffinim dhe Stil</span>
+                <span class="mx-4 text-xl italic font-bold text-orange-500">Ekskluzivitet dhe Luks</span>
+                <span class="mx-4 text-xl italic font-bold text-orange-500">Inovacion</span>
+                <span class="mx-4 text-xl italic font-bold text-orange-500">Ekologjik</span>
+            </div>
+
+            <div class="absolute top-0 py-1 animate-marquee2 whitespace-nowrap">
+                <span class="mx-4 text-xl italic font-bold text-orange-500">Arkitekturë</span>
+                <span class="mx-4 text-xl italic font-bold text-orange-500">Raffinim dhe Stil</span>
+                <span class="mx-4 text-xl italic font-bold text-orange-500">Ekskluzivitet dhe Luks</span>
+                <span class="mx-4 text-xl italic font-bold text-orange-500">Inovacion</span>
+                <span class="mx-4 text-xl italic font-bold text-orange-500">Ekologjik</span>
+            </div>
+        </div>
 
 
         <!-- ############# Per Shitje ############### -->
@@ -13,7 +30,7 @@
                 </div>
                 <div>
                     <a href="{{ route('all-properties-page') }}">
-                        <p class="text-slate-700 underline">Zbuloji te gjitha</p>
+                        <p class="text-slate-700 underline">Zbulo</p>
                     </a>
                 </div>
             </div>

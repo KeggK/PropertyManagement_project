@@ -7,7 +7,7 @@
             </div>
             <div>
                 <a href="{{ route('all-properties-page') }}">
-                    <p class="text-slate-700 underline">Zbuloji te gjitha</p>
+                    <p class="text-slate-700 underline">Zbulo</p>
                 </a>
             </div>
         </div>
@@ -189,10 +189,10 @@
 
                 <div class="flex flex-col items-center mt-8 px-3 py-2  md:h-screen">
                     <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                        <img class="w-20 h-20 mr-2" src="../images/header2.png" alt="logo">
+                        <img class="w-20 h-20 mr-2" src="../images/main-logo.png" alt="logo">
                         <h1
                             class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-3xl dark:text-white">
-                            Hazaar
+                            Elite
                         </h1>
                     </a>
                     <form action="{{ route('property-contact', ['id' => $property->id]) }}" method="POST"

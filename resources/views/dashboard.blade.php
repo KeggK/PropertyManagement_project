@@ -35,8 +35,8 @@
                 </ol>
             </nav>
             @if(auth()->check() && auth()->user()->role == 'admin')
-                
-            
+
+
             <div class = "flex flex-wrap my-5 -mx-2">
                 <div class = "w-full lg:w-1/3 p-2">
                     <a href="{{ route('users-list') }}"
@@ -124,7 +124,7 @@
             </div>
             @else
             <div class="text-center  text-green-500 text-4xl py-20">
-                Hello {{auth()->user()->name}}</div> 
+                Pershendetje {{auth()->user()->name}}</div>
                 <div class=
                 'text-center text-green-500'> You have landed on your dashboard.</div>
             @endif

@@ -10,9 +10,9 @@
         <section class="bg-gray-200 dark:bg-gray-900 ">
             <div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                    <img class="w-8 h-8 mr-2" src="../images/header2.png" alt="logo">
+                    <img class="w-16 h-auto mr-2" src="../images/main-logo.png" alt="logo">
                     <h1 class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-3xl dark:text-white">
-                      Hazaar
+                      Elite Group
                     </h1>
                 </a>
                 <div
@@ -55,7 +55,7 @@
                                     password?</a>
                             </div>
                             <button type="submit"
-                            class="bg-black text-green-500 px-5 py-3 rounded-md text-lg font-semibold">Sign
+                            class="bg-black text-orange-500 px-5 py-3 rounded-md text-lg font-semibold">Sign
                                 in</button>
                             <p class="text-sm font-light text-gray-500 dark:text-gray-400">
                                 Don’t have an account yet? <a href="{{route('register-page')}}"
