@@ -54,8 +54,9 @@
                                     <th scope="col" class="px-6 py-3">
                                         Total Comments
                                     </th>
-                                    
-                                    
+                                    <th scope="col" class="px-6 py-3">
+                                        Actions
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,24 +70,31 @@
                                             {{$post->title}}
                                         </td>
                                         @php
-                                            //$totalLikes = 0;
-                                            //$liked_post = \App\Models\Like::where('post_id', $post_id)->get()->count();
                                         @endphp
                                         <td class="px-6 py-4">
                                             {{$post->like->count()}}
                                         </td>
                                         @php
-                                        //$totalComments = 0;
-                                        //$commented_post = \App\Models\Comment::where('post_id', $post_id)->get()->count();
                                     @endphp
                                         <td class="px-6 py-4">
                                             {{$post->comment->count()}}
                                         </td>
-                                        
-                                        
+                                        <td class="px-6 py-4">
+                                            <div class="flex flex-row items-center gap-x-4 divide-x divide-orange-500">
+                                                <a href="{{ route('single-post-page', ['id' => $post->id]) }}">View</a>
+                                                <a href="{{ route('edit-post-page', ['id' => $post->id]) }}" class="pl-3">Edit</a>
+                                                <form action="{{ route('delete-post', ['id' => $post->id]) }}"
+                                                    method="POST" class="pl-3">
+                                                    @csrf
+                                                    <button type="submit"
+                                                        >
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </td>
                                     </tr>
                                 @endforeach
-
                             </tbody>
                         </table>
                     </div>

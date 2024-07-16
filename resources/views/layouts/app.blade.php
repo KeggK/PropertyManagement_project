@@ -37,22 +37,22 @@
     ])
     @if ($showHeader)
         <header class="bg-white">
-
             <div x-data="{ menu_open: false, profile_open: false }" class="max-w-screen-2xl px-4 lg:px-16 mx-auto">
-
-                <nav class="relative  md:flex md:items-center md:justify-between py-4">
+                <nav class="relative flex flex-row items-center justify-between py-4">
                     <div class="flex flex-col lg:hidden">
                         <button @click="menu_open =! menu_open"><i class="fa-solid fa-bars"></i></button>
                         <div x-show="menu_open" @click.outside="menu_open = false">
                             <div
-                                class="absolute top-0 left-0 flex flex-col h-screen bg-white w-[40%] gap-y-5 divide-y text-gray-600 font-semibold uppercase">
+                                class="fixed top-0 left-0 z-50 p-4 flex flex-col h-screen bg-white w-[60%] gap-y-5 divide-y text-gray-600 font-semibold uppercase">
+                                <div  class="flex flex-row justify-between">
+                                    <div class="text-orange-400"> MENU</div>
+                                    <x-icons.x-mark @click="menu_open = false" class="w-6 h-6 text-red-600 cursor-pointer"/>
+                                </div>
                                 @foreach ($menu as $key => $item)
                                     <div>
                                         <a class="" href="#">{{ $key }}</a>
                                     </div>
                                 @endforeach
-
-
                             </div>
                         </div>
                     </div>
@@ -64,15 +64,14 @@
 
                     </div>
                     <div class="">
-                        <ul class="flex items-center space-x-8">
-                            <div class="hidden lg:flex">
+                        <ul class="flex items-center">
+                            <div class="hidden lg:flex lg:mr-7">
                                 @foreach ($menu as $key => $item)
                                     <li>
-                                        <a class="hover:text-orange-700 p-5 hover:bg-black"
+                                        <a class="hover:text-orange-700 md:px-7 py-3 hover:bg-black hover:rounded-full"
                                             href="{{ route($item) }}">{{ $key }}</a>
                                     </li>
                                 @endforeach
-
                             </div>
                             <div class="flex flex-col">
                                 <button @click="profile_open =! profile_open">
@@ -102,7 +101,10 @@
 
                                         {{-- only admins and sellers --}}
                                         @if ((auth()->check() && auth()->user()->role == 'seller') || auth()->user()->role == 'admin')
-                                            <a href="{{ route('new-property-page') }}">
+                                        <a href="{{ route('properties-list') }}">
+                                           Properties
+                                        </a>
+                                        <a href="{{ route('new-property-page') }}">
                                                 Add New Property
                                             </a>
                                             <a href="{{ route('reservations-list') }}">
@@ -145,7 +147,7 @@
 
     @if ($showFooter)
         <footer class="bg-white">
-            <div class="flex  py-10 justify-between max-w-screen-2xl px-4 lg:px-16 mx-auto">
+            <div class="flex flex-col md:flex-row  py-10 justify-between max-w-screen-2xl px-4 lg:px-16 mx-auto">
                 <div class="flex flex-col gap-y-5">
                     <div>
                         <a href="">
@@ -186,20 +188,16 @@
                 </div>
             </div>
             <div class="flex justify-center py-5 max-w-screen-2xl px-4 lg:px-16 mx-auto">
-                <a href="">
-                    <p class="text-xs font-bold px-3 text-gray-600">Cookies</p>
-                </a>
-                <a href="">
-                    <p class="text-xs font-bold px-3 text-gray-600">Politika e Privatesise</p>
-                </a>
-                <a href="">
-                    <p class="text-xs font-bold px-3 text-gray-600">Kushtet e Perdorimit</p>
-                </a>
-                <a href="">
-                    <p class="text-xs font-bold px-3 text-gray-600">Reklamo ne Elite</p>
-                </a>
+
+
                 <a href="">
                     <p class="text-xs font-bold px-3 text-gray-600">Rreth nesh</p>
+                </a>
+                <a href="">
+                    <p class="text-xs font-bold px-3 text-gray-600">Kontakt</p>
+                    <a href="">
+                    <p class="text-xs font-bold px-3 text-gray-600">Reklamo ne Elite</p>
+                </a>
                 </a>
             </div>
             <div class="flex justify-between max-w-screen-2xl px-4 lg:px-16 mx-auto">
