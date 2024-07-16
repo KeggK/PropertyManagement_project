@@ -52,7 +52,7 @@ class HomeController extends Controller
             $favourite_item = Favourite::where('user_id', auth()->user()->id)->where('property_id', $property_id)->first();
 
             $favourite_item->delete();
-            return redirect()->route('home_page')->withSuccess('The propety was unfavourited');
+            return back()->with('success', 'The propety was unfavourited');
         } else {
             Favourite::create([
                 'user_id' => auth()->user()->id,

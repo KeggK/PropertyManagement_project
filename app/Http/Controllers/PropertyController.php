@@ -206,7 +206,7 @@ class PropertyController extends Controller
             ];
 
             Reservation::create($reservationData);
-            return redirect()->route('single-property', ['id' => $property_id])->withSuccess('A meeting was successfully booked!');
+            return redirect()->route('single-property', ['id' => $property_id])->withSuccess('The meeting was successfully booked!');
         } catch (Exception $e) {
             dd($e);
         }

@@ -63,7 +63,8 @@
                                     <th scope="col" class="px-6 py-3">
                                         Total Contacts
                                     </th>
-                                    
+                                    <th class="px-6 py-3">Edit</th>
+
                                 </tr>
                             </thead>
                             <tbody>
@@ -86,8 +87,6 @@
                                         <td class="px-6 py-4">
                                             {{ $property->no_rooms }}
                                         </td>
-
-
                                         @php
                                             $user = \App\Models\User::findOrFail($property->user_id);
                                         @endphp
@@ -97,17 +96,24 @@
                                         @php
                                         $total = 0;
                                             $formData = \App\Models\FormContact::where('property_id', $property->id)->get()->count();
-                                            
                                         @endphp
-                                        {{-- @foreach ($formData as $data) --}}
                                         <td class="px-6 py-4">
-                                            {{ $formData }} 
+                                            {{ $formData }}
                                             <a class="underline text-blue-500 pl-2 cursor-pointer" href="{{ route('display-property-contacts', ['id' => $property->id]) }}">View</a>
-
                                         </td>
-                                        
-                                        {{-- @endforeach --}}
-                                        
+                                        <td class="px-6 py-4">
+                                            <div class="flex flex-row gap-x-3 divide-x divide-orange-500">
+                                            <a href="{{ route('edit-property-page', ['id' => $property->id]) }}">Edit</a>
+                                            <form action="{{ route('delete-property', ['id' => $property->id]) }}"
+                                                method="POST" class="pl-3">
+                                                @csrf
+                                                <button type="submit" >
+                                                    Delete
+                                                </button>
+                                            </form>
+                                            </div>
+                                        </td>
+
                                     </tr>
                                 @endforeach
 

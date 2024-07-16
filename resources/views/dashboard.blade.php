@@ -35,12 +35,12 @@
                 </ol>
             </nav>
             @if(auth()->check() && auth()->user()->role == 'admin')
-
+            <div class="text-center  text-orange-700 text-4xl pt-10">Pershendetje {{auth()->user()->name}}</div>
 
             <div class = "flex flex-wrap my-5 -mx-2">
                 <div class = "w-full lg:w-1/3 p-2">
                     <a href="{{ route('users-list') }}"
-                        class = "flex items-center flex-row w-full bg-gradient-to-r dark:from-cyan-500 dark:to-blue-500 from-indigo-500 via-purple-500 to-pink-500 rounded-md p-3">
+                        class = "flex items-center flex-row w-full bg-gradient-to-r  from-orange-500 via-red-500 to-pink-500 rounded-md p-3">
                         <div
                             class = "flex text-indigo-500 dark:text-white items-center bg-white dark:bg-[#0F172A] p-2 rounded-md flex-none w-8 h-8 md:w-12 md:h-12 ">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
@@ -68,7 +68,7 @@
                 </div>
                 <div class = "w-full md:w-1/2 lg:w-1/3 p-2 ">
                     <a href="{{ route('properties-list') }}"
-                        class = "flex items-center flex-row w-full bg-gradient-to-r dark:from-cyan-500 dark:to-blue-500 from-indigo-500 via-purple-500 to-pink-500 rounded-md p-3">
+                        class = "flex items-center flex-row w-full  bg-gradient-to-r from-orange-500 via-red-500 to-pink-500 rounded-md p-3">
                         <div
                             class = "flex text-indigo-500 dark:text-white items-center bg-white dark:bg-[#0F172A] p-2 rounded-md flex-none w-8 h-8 md:w-12 md:h-12 ">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
@@ -96,7 +96,7 @@
                 </div>
                 <div class = "w-full md:w-1/2 lg:w-1/3 p-2">
                     <a href="{{ route('contacts-list') }}"
-                        class = "flex items-center flex-row w-full bg-gradient-to-r dark:from-cyan-500 dark:to-blue-500 from-indigo-500 via-purple-500 to-pink-500 rounded-md p-3">
+                        class = "flex items-center flex-row w-full  bg-gradient-to-r  from-orange-500 via-red-500 to-pink-500 rounded-md p-3">
                         <div
                             class = "flex text-indigo-500 dark:text-white items-center bg-white dark:bg-[#0F172A] p-2 rounded-md flex-none w-8 h-8 md:w-12 md:h-12 ">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
@@ -123,10 +123,10 @@
                 </div>
             </div>
             @else
-            <div class="text-center  text-green-500 text-4xl py-20">
+            <div class="text-center  text-orange-700 text-4xl py-20">
                 Pershendetje {{auth()->user()->name}}</div>
                 <div class=
-                'text-center text-green-500'> You have landed on your dashboard.</div>
+                'text-center text-orange-500'> You have landed on your dashboard.</div>
             @endif
         </div>
     </body>

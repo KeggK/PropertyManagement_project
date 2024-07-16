@@ -57,7 +57,6 @@ class PostsController extends Controller
             'image' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'user_id' => 'required',
             'category' => 'required'
         ]);
         //dump($request->image);
@@ -68,20 +67,17 @@ class PostsController extends Controller
             $path = $file->storeAs('public/hazaar-images', $filename);
             $imgName = $filename;
         }
-
         Post::create([
             'photo' => $imgName,
             'title' =>  $request->title,
             'description' => $request->description,
-            //'timestamps' => $request->timestamps,
-            'user_id' => $request->user_id,
+            'user_id' => auth()->user()->id,
             'category_id' => $request->category
-
         ]);
         return redirect()->route('blog-page')->with('success', 'Post created');
 
 
-        // $post->save; 
+        // $post->save;
         // } catch(\Exception $e){
         //     dd($e);
 
@@ -151,7 +147,7 @@ class PostsController extends Controller
         ]);
 
 
-        // $post->save; 
+        // $post->save;
         // } catch(\Exception $e){
         //     dd($e);
 
