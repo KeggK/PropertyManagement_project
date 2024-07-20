@@ -2,8 +2,8 @@
 @section('content')
 
     <div class="bg-local bg-cover bg-center bg-no-repeat"
-        style="background-image: url('https://hazaar.eu/wp-content/uploads/2023/10/home-page-image.jpg');">
-        <div
+    style="background-image: url('{{ asset('images/banner-image.png') }}')" >       
+    <div
             class="max-w-screen-2xl px-4 lg:px-16 mx-auto py-20 items-center justify-center bg-stone-700 bg-opacity-50 rounded-md w-fit">
 
             <div class="max-w-screen-2xl px-4 mx-auto lg:px-16">
@@ -83,7 +83,7 @@
                                 @enderror
                             </div>
                             <div>
-                                <button type="submit" class="bg-black text-green-500 px-5 py-3 rounded-md">Submit</button>
+                                <button type="submit" class="bg-black text-orange-500 px-5 py-3 rounded-md">Submit</button>
                             </div>
                             @if (Session::has('success'))
                                 {{ Session::get('success') }}

@@ -129,7 +129,7 @@ try{
     }
 
     public function changePassword(){
-        return view ('change-password');
+        return view ('myProfile');
     }
 
     
@@ -145,7 +145,7 @@ try{
 
 
         if(!Hash::check($request->old_password, auth()->user()->password)){
-            return redirect()->route('change-password-page')->withErrors( "The password doesn't match!");
+            return redirect()->route('my-profile-page')->withErrors( "The password doesn't match!");
         }
 
         // dd($request);
@@ -154,13 +154,13 @@ try{
             'password' => Hash::make($request->new_password)
         ]);
 
-        return redirect()->route('change-password-page')->with('success','Password was changed!');
+        return redirect()->route('my-profile-page')->with('success','Password was changed!');
     }
 
         catch(\Exception $e){
 
             //dd($e);
-            return redirect()->route('change-password-page')->withErrors('Password not updated!'. $e->getMessage()); 
+            return redirect()->route('my-profile-page')->withErrors('Password not updated!'. $e->getMessage()); 
         }
 
     }

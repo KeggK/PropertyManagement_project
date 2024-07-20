@@ -16,28 +16,32 @@
             @endif
             <form action="{{ route('blog-create') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input type="file" name="image" placeholder="blog image name">
+                <div class= "flex flex-col gap-y-5">
 
-                <input type="text" name="title" placeholder="title">
-                @error('title')
-                    <span>{{ $message }}</span>
-                @enderror
-                <input type="text" name="description" placeholder="blog description">
-                @error('description')
-                    <span>{{ $message }}</span>
-                @enderror
-
-                <label for="category_id">Category</label>
-                <select name="category" id="category_id">
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }} ">{{ $category->category_name }}</option>
-                    @endforeach
-                    @error('category')
+                    <input type="text" name="title" placeholder="Title" class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-orange-500">
+                    @error('title')
                         <span>{{ $message }}</span>
                     @enderror
-                </select>
-                <button type="submit">Submit</button>
+                   
+                    <input type="file" name="image" placeholder="blog image name" class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-orange-500">
 
+                    <input type="text" name="description" placeholder="Blog description" class="w-full rounded-md py-20 px-4 bg-gray-100 text-sm outline-orange-500">
+                    @error('description')
+                        <span>{{ $message }}</span>
+                    @enderror
+
+                    <label for="category_id"></label>
+                    <select name="category" id="category_id" class="w-full rounded-md py-3 px-4 bg-gray-100 text-sm outline-orange-500">
+                        <option value="">Category</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }} ">{{ $category->category_name }}</option>
+                        @endforeach
+                        @error('category')
+                            <span>{{ $message }}</span>
+                        @enderror
+                    </select>
+                    <button class=" text-black bg-orange-500 hover:bg-orange-600 font-semibold rounded-md text-sm px-4 py-3" type="submit">Submit</button>
+                </div>
             </form>
         </div>
         <div class="">
@@ -50,9 +54,10 @@
                     <form action="{{ route('filter-blog') }}" method="POST">
                         @csrf
 
-                        <div>
+                        <div class="flex gap-x-5 mt-5">
                             <div>
                                 <select name="filter_category" id="filter_category">
+                                    <option value="">Category</option>
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                     @endforeach
@@ -60,13 +65,14 @@
                             </div>
                             <div>
                                 <select name="filter_user" id="filter_user">
+                                    <option value="">Author</option>
                                     @foreach ($users as $user)
                                         <option value="{{ $user->id }}">{{ $user->name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                         </div>
-                        <button type="submit">Filter</button>
+                        <button type="submit" class="text-black bg-orange-500 hover:bg-orange-600 font-semibold rounded-md my-2 text-sm px-4 py-2">Filter</button>
 
                     </form>
 

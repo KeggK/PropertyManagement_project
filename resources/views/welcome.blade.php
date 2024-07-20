@@ -6,7 +6,7 @@
         <div class="relative flex overflow-x-hidden bg-white">
             <div class="py-1 animate-marquee whitespace-nowrap">
                 <span class="mx-4 text-xl italic font-bold text-orange-500">Arkitekturë</span>
-                <span class="mx-4 text-xl italic font-bold text-orange-500">Raffinim dhe Stil</span>
+                <span class="mx-4 text-xl italic font-bold text-orange-500">Rafinim dhe Stil</span>
                 <span class="mx-4 text-xl italic font-bold text-orange-500">Ekskluzivitet dhe Luks</span>
                 <span class="mx-4 text-xl italic font-bold text-orange-500">Inovacion</span>
                 <span class="mx-4 text-xl italic font-bold text-orange-500">Ekologjik</span>
@@ -14,7 +14,7 @@
 
             <div class="absolute top-0 py-1 animate-marquee2 whitespace-nowrap">
                 <span class="mx-4 text-xl italic font-bold text-orange-500">Arkitekturë</span>
-                <span class="mx-4 text-xl italic font-bold text-orange-500">Raffinim dhe Stil</span>
+                <span class="mx-4 text-xl italic font-bold text-orange-500">Rafinim dhe Stil</span>
                 <span class="mx-4 text-xl italic font-bold text-orange-500">Ekskluzivitet dhe Luks</span>
                 <span class="mx-4 text-xl italic font-bold text-orange-500">Inovacion</span>
                 <span class="mx-4 text-xl italic font-bold text-orange-500">Ekologjik</span>
@@ -266,7 +266,7 @@
                             <p>Zbuloni një botë ku luksozia dhe sofistikimi bashkohen pa kurrfarë pengese te Grupi Elite të
                                 Pasurive të Patundshme.</p>
                         </div>
-                        <div><button class="bg-black text-orange-700 font-semibold p-3 rounded-md">Zbuloni Prona</button></div>
+                        <div><a href="{{route('all-properties-page')}}" class="bg-black text-orange-700 font-semibold p-3 rounded-md">Zbuloni Prona</a></div>
                     </div>
                 </div>
                 <div class="flex flex-col md:flex-row w-full">
@@ -280,7 +280,7 @@
                             <p>Shfletoni faqen tonë të internetit për të parë listat tona aktuale, duke përfshirë përshkrime
                                 të hollësishme, fotografi të mahnitshme dhe ture virtuale që japin jetë secilës pronë. </p>
                         </div>
-                        <div><button class="bg-black text-orange-700 font-semibold p-3 rounded-md">Kontrollo Prona</button></div>
+                        <div><a href="{{route('all-properties-page')}}" class="bg-black text-orange-700 font-semibold p-3 rounded-md">Kontrollo Prona</a></div>
                     </div>
                 </div>
             </div>

@@ -38,7 +38,7 @@
         </div>
     </div>
     <div onclick="openNav()"
-        class = "-right-6 transition transform ease-in-out duration-500 flex border-4 border-white dark:border-[#0F172A] bg-[#1E293B] dark:hover:bg-green-500 hover:bg-green-500 absolute top-2 p-3 rounded-full text-white hover:rotate-45">
+        class = "-right-6 transition transform ease-in-out duration-500 flex border-4 border-white dark:border-[#0F172A] bg-[#1E293B] dark:hover:bg-orange-500 hover:bg-orange-500 absolute top-2 p-3 rounded-full text-white hover:rotate-45">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor"
             class="w-4 h-4">
             <path strokeLinecap="round" strokeLinejoin="round"
@@ -48,7 +48,7 @@
     <!-- MAX SIDEBAR-->
     <div class= "max hidden text-white mt-20 flex-col space-y-2 w-full h-[calc(100vh)]">
         <div
-            class =  "hover:ml-4 w-full text-white hover:text-green-500 dark:hover:text-green-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
+            class =  "hover:ml-4 w-full text-white hover:text-orange-500 dark:hover:text-orange-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5}
                 stroke="currentColor" class="w-4 h-4">
                 <path strokeLinecap="round" strokeLinejoin="round"
@@ -59,7 +59,7 @@
             </a>
         </div>
         <div
-            class =  "hover:ml-4 w-full text-white hover:text-green-500 dark:hover:text-green-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
+            class =  "hover:ml-4 w-full text-white hover:text-orange-500 dark:hover:text-orange-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-4 h-4">
                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -70,7 +70,7 @@
             </a>
         </div>
         <div
-            class =  "hover:ml-4 w-full text-white hover:text-green-500 dark:hover:text-green-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
+            class =  "hover:ml-4 w-full text-white hover:text-orange-500 dark:hover:text-orange-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-4 h-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
@@ -81,7 +81,7 @@
             </a>
         </div>
         <div
-            class =  "hover:ml-4 w-full text-white hover:text-green-500 dark:hover:text-green-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
+            class =  "hover:ml-4 w-full text-white hover:text-orange-500 dark:hover:text-orange-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-4 h-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
@@ -92,7 +92,7 @@
             </a>
         </div>
         <div
-            class =  "hover:ml-4 w-full text-white hover:text-green-500 dark:hover:text-green-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
+            class =  "hover:ml-4 w-full text-white hover:text-orange-500 dark:hover:text-orange-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-4 h-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />
@@ -103,7 +103,7 @@
             </a>
         </div>
         <div
-            class =  "hover:ml-4 w-full text-white hover:text-green-500 dark:hover:text-green-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
+            class =  "hover:ml-4 w-full text-white hover:text-orange-500 dark:hover:text-orange-500 bg-[#1E293B] p-2 pl-8 rounded-full transform ease-in-out duration-300 flex flex-row items-center space-x-3">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="w-4 h-4">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 107.5 7.5h-7.5V6z" />

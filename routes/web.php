@@ -73,7 +73,7 @@ Route::middleware([Authenticate::class])->group(function () {
 
     Route::get('/myProfile', [AuthController::class, 'viewProfile'])->name('my-profile-page');
     Route::post('/myProfile/{id}/update-my-profile', [AuthController::class, 'update'])->name('update-profile');
-    Route::get('/change-password', [AuthController::class, 'changePassword'])->name('change-password-page');
+    Route::get('/change-password', [AuthController::class, 'changePassword'])->name('change-password');
     Route::post('/change-password', [AuthController::class, 'passwordUpdate'])->name('update-password');
     Route::get('/', [App\Http\Controllers\HomeController::class, 'displayHome'])->name('home_page');
     Route::post('/make-favourite/{id}', [App\Http\Controllers\HomeController::class, 'makeFavourite'])->name('make-favourite');
